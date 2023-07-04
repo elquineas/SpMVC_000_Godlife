@@ -32,4 +32,22 @@ public class MemberController {
 		return "login";
 	}
 	
+
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public String join(Model model) {
+		model.addAttribute("BODY","JOIN");
+		return "member";
+	}
+	
+	@RequestMapping(value = "/findId", method = RequestMethod.GET)
+	public String findId(Model model) {
+		model.addAttribute("BODY","FINDID");
+		return "member";
+	}
+	@RequestMapping(value = "/findPw", method = RequestMethod.GET)
+	public String findPw(Model model) {
+		model.addAttribute("BODY","FINDPW");
+		return "member";
+	}
+	
 }

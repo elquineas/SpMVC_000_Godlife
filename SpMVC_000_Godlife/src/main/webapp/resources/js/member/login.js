@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#kakao_login").addEventListener("click", () => {
+  document.querySelector("#kakao_login")?.addEventListener("click", () => {
     // const input_id = document.querySelector("input#email");
     // if (!input_id.value) {
     //   const nav_text = "* 이메일을 입력해주세요";
