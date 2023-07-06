@@ -192,22 +192,6 @@ h2 {
   z-index: 100;
 }
 
-/* .title {
-  text-align: center;
-  width: 100%;
-  height: 150px;
-  padding-top: 100px;
-}
-.title div {
-  border: 1px solid #b2b2b2;
-  padding: 10px;
-  margin: 0 auto;
-  border-radius: 5px;
-  width: 280px;
-  height: 40px;
-  font-size: 15px;
-} */
-
 .header_box {
   /* border: 1px solid #b2b2b2; */
   background-color: #ecf2ff;
@@ -220,19 +204,9 @@ h2 {
   font-weight: 700;
   font-size: 25px;
 }
-/* .icon-box {
-  position: absolute;
-  left: 310px;
-  padding: 2px 5px;
-  line-height: 30px;
-  width: 40px;
-  height: 40px;
-  font-size: 25px;
-} */
 
 .check_btn {
   position: absolute;
-  /* border: 1px solid #b2b2b2; */
   background-color: #f5f0bb;
   width: 100px;
   height: 60px;
@@ -259,6 +233,7 @@ h2 {
   padding: 7px;
 }
 
-#login {
+#findId_login,
+#findPw_login {
   display: none;
 }

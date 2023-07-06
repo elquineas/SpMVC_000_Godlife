@@ -33,7 +33,7 @@
 	    <div class="msg_box"></div>
 	    <div class="contain_box">
 	     	<button class="login_button" id="next">다음</button>
-	      	<button class="login_button" id="login">로그인하기</button>
+	      	<button class="login_button" id="findPw_login">로그인하기</button>
     	</div>
   	</div>
 </div>

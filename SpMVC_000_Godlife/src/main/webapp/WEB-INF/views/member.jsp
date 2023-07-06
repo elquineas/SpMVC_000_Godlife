@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
-<c:set value="ver_0011" var="ver" />
+<c:set value="ver_0012" var="ver" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,9 +32,8 @@
 	<c:if test="${BODY == 'FINDID'}">
 		<%@ include file="/WEB-INF/views/member/findId.jsp" %>
 	</c:if>
- 	<%-- 
-	<c:if test="${BODY == 'FINDPW'}">
+ 	<c:if test="${BODY == 'FINDPW'}">
 		<%@ include file="/WEB-INF/views/member/findPw.jsp" %>
-	</c:if>  --%>
+	</c:if>
 </body>
 </html>

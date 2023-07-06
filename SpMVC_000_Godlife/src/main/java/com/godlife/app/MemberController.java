@@ -44,6 +44,7 @@ public class MemberController {
 		model.addAttribute("BODY","FINDID");
 		return "member";
 	}
+	
 	@RequestMapping(value = "/findPw", method = RequestMethod.GET)
 	public String findPw(Model model) {
 		model.addAttribute("BODY","FINDPW");
