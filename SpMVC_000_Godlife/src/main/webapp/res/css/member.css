@@ -39,6 +39,8 @@
   width: 450px;
   height: 60px;
   font-size: 25px;
+  margin: 0 auto;
+  line-height: 60px;
 }
 .login_button:hover {
   box-shadow: 2px 2px rgba(0, 0, 0, 0.1);

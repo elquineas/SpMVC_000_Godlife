@@ -26,9 +26,10 @@ public class MemberController {
 //	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(Model model) {
-	    
-		return "login";
+	public String login(String email, String password, Model model) {
+		System.out.println(email + " : " + password);
+		model.addAttribute("BODY","LOGIN");
+		return "member";
 	}
 	
 	@RequestMapping(value = "/login/kakao", method = RequestMethod.GET)
