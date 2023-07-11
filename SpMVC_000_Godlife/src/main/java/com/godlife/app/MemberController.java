@@ -24,6 +24,12 @@ public class MemberController {
 //	public void getKakaoUserInfo(String code) {
 //	    System.out.println("OAuth Code : "+code);
 //	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(Model model) {
+	    
+		return "login";
+	}
 	
 	@RequestMapping(value = "/login/kakao", method = RequestMethod.GET)
 	public String getKakaoUserInfo(@RequestParam("code") String code, Model model) {

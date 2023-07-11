@@ -13,14 +13,14 @@
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
   crossorigin="anonymous" />
   
-<link href="${rootPath}/resources/css/main.css?${ver}" rel="stylesheet">
-<link href="${rootPath}/resources/css/member.css?${ver}" rel="stylesheet">
+<link href="${rootPath}/res/css/main.css?${ver}" rel="stylesheet">
+<link href="${rootPath}/res/css/member.css?${ver}" rel="stylesheet">
 
 <script> 
 	var rootPath = "${rootPath}";
 </script>
-<script src="${rootPath}/resources/js/member/login.js?${ver}"></script>
-<script src="${rootPath}/resources/js/member/join.js?${ver}"></script>
+<script src="${rootPath}/res/js/member/login.js?${ver}"></script>
+<script src="${rootPath}/res/js/member/join.js?${ver}"></script>
 </head>
 <body>
 	<c:if test="${empty BODY}">
