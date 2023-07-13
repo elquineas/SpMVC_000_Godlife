@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.godlife.app.dao.MemberDao">
+ 	
+ 	<select id="idCheck">
+ 		SELECT COUNT(*)
+		  FROM tbl_user
+		 WHERE u_email = #{u_email}
+		   AND u_useyn = 'Y'
+ 	</select>
+ 	
+ 	<select id="pwCheck">
+ 		SELECT COUNT(*)
+		  FROM tbl_user
+		 WHERE u_email = #{u_email}
+		   AND u_password = #{u_password} 
+		   AND u_useyn = 'Y'
+ 	</select>
+ 	
+ 	
+ </mapper> 

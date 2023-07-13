@@ -1,35 +1,45 @@
 package com.godlife.app;
 
-import java.util.Locale;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import lombok.RequiredArgsConstructor;
+import com.godlife.app.dao.MemberDao;
+import com.godlife.app.model.UserDto;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequiredArgsConstructor
 @RequestMapping(value = "/member")
 public class MemberController {
-	
-//	@GetMapping(value = "/social/login/kakao", produces = MediaType.APPLICATION_JSON_VALUE)
-//	@ApiOperation(value = "카카오 간편로그인 테스트", notes = "카카오 간편로그인 시 활용한다.")
-//	@Description("Front로 부터 kakao Oauth를 받는다")
-//	@CustomApiResponse
-//	public void getKakaoUserInfo(String code) {
-//	    System.out.println("OAuth Code : "+code);
-//	}
+	private final MemberDao mDao;
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(String email, String password, Model model) {
-		System.out.println(email + " : " + password);
-		model.addAttribute("BODY","LOGIN");
-		return "member";
+	public MemberController(MemberDao mDao) {
+		this.mDao = mDao;
+	}
+
+	@RequestMapping(value = "/login_check", method = RequestMethod.GET)
+	@ResponseBody
+	public String login_check(UserDto uDto, Model model) {
+		int result = 0;
+		
+		// ID 있는지 체크
+		result = mDao.idCheck(uDto);
+		if(result < 1) {
+			return "EXIST";
+		}
+		
+		// PW 맞는지 체크		
+		result = mDao.pwCheck(uDto);
+		if(result < 1){
+			return "WRONGPW";
+		}else {
+			return "YES";
+		}
 	}
 	
 	@RequestMapping(value = "/login/kakao", method = RequestMethod.GET)
@@ -57,5 +67,6 @@ public class MemberController {
 		model.addAttribute("BODY","FINDPW");
 		return "member";
 	}
+
 	
 }
