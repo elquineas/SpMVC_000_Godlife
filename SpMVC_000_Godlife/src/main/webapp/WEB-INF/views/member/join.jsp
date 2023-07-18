@@ -36,6 +36,16 @@
 		<div class="msg_div checked_box"></div>
 		<div class="contain_box">
 			<span class="icon-box"> 
+				<label for="username">
+					<i class="fa fa-user" aria-hidden="true"></i>
+					<!-- <i class="fa fa-mobile fa-lg" aria-hidden="true"></i> -->
+				</label>
+			</span> 
+			<input class="login_input" id="username" placeholder="이름" />
+		</div>
+		<div class="msg_div checked_box"></div>
+		<div class="contain_box">
+			<span class="icon-box"> 
 				<label for="tel">
 					<i class="fa fa-mobile fa-lg" aria-hidden="true"></i>
 				</label>

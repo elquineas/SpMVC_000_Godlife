@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const msg_divs = document.querySelectorAll("div.msg_div");
 
-  document.querySelector("#login").addEventListener("click", async (e) => {
+  document.querySelector("#login")?.addEventListener("click", async (e) => {
     const input_id = document.querySelector("input#email");
     const input_pw = document.querySelector("input#password");
     // console.log(input_id);

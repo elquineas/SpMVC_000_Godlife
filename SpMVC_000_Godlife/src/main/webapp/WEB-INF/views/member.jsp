@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
-<c:set value="ver_0017" var="ver" />
+<c:set value="ver_0036" var="ver" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +21,7 @@
 </script>
 <script src="${rootPath}/res/js/member/login.js?${ver}"></script>
 <script src="${rootPath}/res/js/member/join.js?${ver}"></script>
+<script src="${rootPath}/res/js/member/findid.js?${ver}"></script>
 </head>
 <body>
 	<c:if test="${empty BODY}">

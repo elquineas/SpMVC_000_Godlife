@@ -2,13 +2,17 @@ const INPUT_INDEX = {
   EMAIL: 0,
   PASSWORD: 1,
   RE_PASSWORD: 2,
-  TEL: 3,
-  BIRTH: 4,
+  USERNAME: 3,
+  TEL: 4,
+  BIRTH: 5,
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   const msg_divs = document.querySelectorAll("div.msg_div");
   const join = () => {
+    // asyncReturn().then((value) => console.log("value1: ", value));
+    saveData().then((value) => console.log("value1: ", value));
+    return false;
     const join_inputs = document.querySelectorAll(".contain input");
     const input_email = join_inputs[INPUT_INDEX.EMAIL].value;
     if (!input_email) {
@@ -110,6 +114,22 @@ document.addEventListener("DOMContentLoaded", () => {
     document.location.href = `${rootPath}/`;
   };
   document.querySelector("#login_btn")?.addEventListener("click", join);
+  //?u_email=${input_id.value}&u_password=${input_pw.value}
+
+  const saveData = async (e) => {
+    const join_inputs = document.querySelectorAll(".contain input");
+    const input_email = join_inputs[INPUT_INDEX.EMAIL].value;
+    const input_password = join_inputs[INPUT_INDEX.PASSWORD].value;
+    const input_name = join_inputs[INPUT_INDEX.USERNAME].value;
+    const input_tel = join_inputs[INPUT_INDEX.TEL].value;
+    const input_birth = join_inputs[INPUT_INDEX.BIRTH].value;
+
+    const idcheck_url = `${rootPath}/member/join_save?u_email=${input_email}&u_password=${input_password}&u_name=${input_name}&u_tel=${input_tel}&u_birth=${input_birth}`;
+    const respnse = await fetch(idcheck_url);
+    const result = await respnse.text();
+    console.log(result);
+    return result;
+  };
 });
 
 const check_data = function () {
