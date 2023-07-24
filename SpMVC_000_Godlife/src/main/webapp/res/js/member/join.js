@@ -11,8 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const msg_divs = document.querySelectorAll("div.msg_div");
   const join = () => {
     // asyncReturn().then((value) => console.log("value1: ", value));
-    saveData().then((value) => console.log("value1: ", value));
-    return false;
     const join_inputs = document.querySelectorAll(".contain input");
     const input_email = join_inputs[INPUT_INDEX.EMAIL].value;
     if (!input_email) {
@@ -101,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const input_birth = join_inputs[INPUT_INDEX.BIRTH].value;
     const birth_check = /^\d{4}-\d{2}-\d{2}$/;
     if (!birth_check.test(input_birth)) {
-      const nav_text = "* 전화번호를 형식에 맞춰서 입력해주세요. ex)1999-01-01";
+      const nav_text = "* 생년월일을 형식에 맞춰서 입력해주세요. ex)1999-01-01";
       msg_divs[INPUT_INDEX.BIRTH].style.display = "block";
       msg_divs[INPUT_INDEX.BIRTH].textContent = nav_text;
       msg_divs[INPUT_INDEX.BIRTH].style.color = "tomato";
@@ -109,14 +107,14 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
     msg_divs[INPUT_INDEX.BIRTH].style.display = "none";
-    alert("가입을 완료하였습니다.");
-    // document.location.href = "login.html";
-    document.location.href = `${rootPath}/`;
+
+    document.querySelector("form.main").submit();
+    return false;
   };
   document.querySelector("#login_btn")?.addEventListener("click", join);
-  //?u_email=${input_id.value}&u_password=${input_pw.value}
 
   const saveData = async (e) => {
+    // saveData().then((value) => console.log("value1: ", value));
     const join_inputs = document.querySelectorAll(".contain input");
     const input_email = join_inputs[INPUT_INDEX.EMAIL].value;
     const input_password = join_inputs[INPUT_INDEX.PASSWORD].value;

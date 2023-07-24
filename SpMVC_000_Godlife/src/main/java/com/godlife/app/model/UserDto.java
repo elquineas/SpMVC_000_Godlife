@@ -1,6 +1,7 @@
 package com.godlife.app.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class UserDto {
 	private String u_email;//	varchar(125)		PRIMARY KEY
 	private String u_password;//	varchar(125)	NOT NULL	

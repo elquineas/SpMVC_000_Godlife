@@ -6,6 +6,9 @@ import com.godlife.app.dao.MemberDao;
 import com.godlife.app.model.UserDto;
 import com.godlife.app.service.MemberService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class MemberServiceImpl implements MemberService{
 
@@ -36,15 +39,21 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public String joinSave(UserDto uDto) {
-		int result = 0;
+		log.debug("데이터 체크 : {}",uDto);
+		
+
 		// ID 있는지 체크
-		result = mDao.idCheck(uDto);
-		if(result > 0) {
+		int id_check = mDao.idCheck(uDto);
+		log.debug("ID 체크 : {}",id_check);
+		if(id_check > 0) {
 			return "EXIST";
 		}
+		
+		
 		// DATA SAVE
-		result = mDao.joinSave(uDto);
-		if(result < 1) {
+		Integer result = mDao.joinSave(uDto);
+		log.debug("SAVE 체크 : {}",result);
+		if(result > 0) {
 			return "SAVE";
 		}else {
 			return "ERROR";

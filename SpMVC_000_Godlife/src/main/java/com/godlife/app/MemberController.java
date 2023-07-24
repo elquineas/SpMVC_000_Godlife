@@ -1,11 +1,14 @@
 package com.godlife.app;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -48,9 +51,17 @@ public class MemberController {
 		return "member";
 	}
 
-	@ResponseBody
-	@RequestMapping(value = "/join_save", method = RequestMethod.GET)
-	public String join_save(UserDto uDto, Model model) {
+//	@ResponseBody
+//	@RequestMapping(value = "/join_save", method = RequestMethod.GET)
+//	public String join_save(UserDto uDto, Model model) {
+//		log.debug("데이터 체크 : {}",uDto);
+//		String result = memberService.joinSave(uDto);
+//		return result;
+//	}
+	
+	@RequestMapping(value = "/join_save", method = RequestMethod.POST)
+	public String join_save(@ModelAttribute("USER") UserDto uDto, Model model) {
+		log.debug("데이터 체크 : {}",uDto);
 		String result = memberService.joinSave(uDto);
 		return result;
 	}
@@ -94,5 +105,20 @@ public class MemberController {
 		return result;
 	}
 	
+	
+	
+	@ModelAttribute("USER")
+	public UserDto uDto() {
+		Date date = new Date(System.currentTimeMillis());
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+		
+		String strDate = dateFormat.format(date);
+		String strTime = timeFormat.format(date);
+		int intYear = Integer.valueOf(strDate);
+		UserDto uDto = UserDto.builder()
+					.build();
+		return uDto;
+	}
 	
 }
