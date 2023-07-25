@@ -44,6 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
       input_pw.focus();
       return false;
     } else if (result === "YES") {
+      msg_divs[0].style.display = "none";
+      msg_divs[1].style.display = "none";
       alert("통과");
     } else {
       msg_divs[0].style.display = "none";

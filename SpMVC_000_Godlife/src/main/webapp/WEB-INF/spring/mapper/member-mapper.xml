@@ -5,7 +5,7 @@
   
  <mapper namespace="com.godlife.app.dao.MemberDao">
  	
- 	<select id="idCheck">
+ 	<select id="findById">
  		SELECT COUNT(*)
 		  FROM tbl_user
 		 WHERE u_email = #{u_email}
@@ -19,11 +19,11 @@
 		   AND u_useyn = 'Y'
  	</select>
  	
- 	<select id="joinSave">
+ 	<insert id="joinSave">
  		INSERT
  		  INTO tbl_user(u_email,u_password,u_name,u_tel,u_birth,u_auth,u_useyn)
  		VALUES(#{u_email}, #{u_password}, #{u_name}, #{u_tel}, #{u_birth},'U','Y')
- 	</select>
+ 	</insert>
  	
  	<select id="findIdByTel">
  		SELECT COUNT(*)

@@ -36,34 +36,27 @@ public class MemberController {
 	public String login_check(UserDto uDto, Model model) {
 		String result = memberService.loginCheck(uDto);
 		return result;
-	}
-	
-//	@RequestMapping(value = "/login/kakao", method = RequestMethod.GET)
-//	public String getKakaoUserInfo(@RequestParam("code") String code, Model model) {
-//	    System.out.println("OAuth Code : "+code);
-//		return "login";
-//	}
-	
+	}	
 
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join(Model model) {
 		model.addAttribute("BODY","JOIN");
 		return "member";
 	}
-
-//	@ResponseBody
-//	@RequestMapping(value = "/join_save", method = RequestMethod.GET)
-//	public String join_save(UserDto uDto, Model model) {
-//		log.debug("데이터 체크 : {}",uDto);
-//		String result = memberService.joinSave(uDto);
-//		return result;
-//	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/id_check", method = RequestMethod.GET)
+	public UserDto idCheck(@ModelAttribute("USER") UserDto uDto, Model model) {
+		log.debug("(컨트롤러)ID CHECK : {}",uDto);
+		uDto = memberService.findById(uDto);
+		return uDto;
+	}
+
 	@RequestMapping(value = "/join_save", method = RequestMethod.POST)
 	public String join_save(@ModelAttribute("USER") UserDto uDto, Model model) {
-		log.debug("데이터 체크 : {}",uDto);
+		log.debug("(컨트롤러)세이브 데이터 체크 : {}",uDto);
 		String result = memberService.joinSave(uDto);
-		return result;
+		return "member";
 	}
 	
 	

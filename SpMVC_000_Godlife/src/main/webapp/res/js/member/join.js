@@ -9,7 +9,7 @@ const INPUT_INDEX = {
 
 document.addEventListener("DOMContentLoaded", () => {
   const msg_divs = document.querySelectorAll("div.msg_div");
-  const join = () => {
+  const join = async () => {
     // asyncReturn().then((value) => console.log("value1: ", value));
     const join_inputs = document.querySelectorAll(".contain input");
     const input_email = join_inputs[INPUT_INDEX.EMAIL].value;
@@ -32,6 +32,20 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
     msg_divs[INPUT_INDEX.EMAIL].style.display = "none";
+
+    const res = await fetch(
+      `${rootPath}/member/id_check?u_email=${input_email}`
+    );
+    const json = await res.json();
+    console.log(json);
+    if (json.u_email === "USE_EMAIL") {
+      const nav_text = "* 등록된 이메일 입니다.";
+      msg_divs[INPUT_INDEX.EMAIL].style.display = "block";
+      msg_divs[INPUT_INDEX.EMAIL].textContent = nav_text;
+      msg_divs[INPUT_INDEX.EMAIL].style.color = "tomato";
+      join_inputs[INPUT_INDEX.EMAIL]?.select();
+      return false;
+    }
 
     const input_password = join_inputs[INPUT_INDEX.PASSWORD].value;
     if (!input_password) {
@@ -111,23 +125,25 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("form.main").submit();
     return false;
   };
+
+  // 클릭이벤트
   document.querySelector("#login_btn")?.addEventListener("click", join);
 
-  const saveData = async (e) => {
-    // saveData().then((value) => console.log("value1: ", value));
-    const join_inputs = document.querySelectorAll(".contain input");
-    const input_email = join_inputs[INPUT_INDEX.EMAIL].value;
-    const input_password = join_inputs[INPUT_INDEX.PASSWORD].value;
-    const input_name = join_inputs[INPUT_INDEX.USERNAME].value;
-    const input_tel = join_inputs[INPUT_INDEX.TEL].value;
-    const input_birth = join_inputs[INPUT_INDEX.BIRTH].value;
+  // const saveData = async (e) => {
+  //   // saveData().then((value) => console.log("value1: ", value));
+  //   const join_inputs = document.querySelectorAll(".contain input");
+  //   const input_email = join_inputs[INPUT_INDEX.EMAIL].value;
+  //   const input_password = join_inputs[INPUT_INDEX.PASSWORD].value;
+  //   const input_name = join_inputs[INPUT_INDEX.USERNAME].value;
+  //   const input_tel = join_inputs[INPUT_INDEX.TEL].value;
+  //   const input_birth = join_inputs[INPUT_INDEX.BIRTH].value;
 
-    const idcheck_url = `${rootPath}/member/join_save?u_email=${input_email}&u_password=${input_password}&u_name=${input_name}&u_tel=${input_tel}&u_birth=${input_birth}`;
-    const respnse = await fetch(idcheck_url);
-    const result = await respnse.text();
-    console.log(result);
-    return result;
-  };
+  //   const idcheck_url = `${rootPath}/member/join_save?u_email=${input_email}&u_password=${input_password}&u_name=${input_name}&u_tel=${input_tel}&u_birth=${input_birth}`;
+  //   const respnse = await fetch(idcheck_url);
+  //   const result = await respnse.text();
+  //   console.log(result);
+  //   return result;
+  // };
 });
 
 const check_data = function () {
