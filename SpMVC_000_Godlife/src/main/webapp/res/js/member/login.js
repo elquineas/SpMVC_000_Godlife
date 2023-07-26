@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (result === "YES") {
       msg_divs[0].style.display = "none";
       msg_divs[1].style.display = "none";
-      document.location.href = `${rootPath}/challenge`;
+      document.location.href = `${rootPath}/challengeTest`;
       // alert("통과");
     } else {
       msg_divs[0].style.display = "none";
