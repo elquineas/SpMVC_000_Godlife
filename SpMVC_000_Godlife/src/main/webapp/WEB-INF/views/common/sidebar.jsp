@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
 <nav class="side_bar">
-	<a href="" class="mainlogo"> 
+	<a href="/app/challenge/" class="mainlogo"> 
 		<img src="${rootPath}/res/image/www2.png" width="250px" />
 	</a>
 	<div id="godlife" class="title font-effect-fire">
@@ -13,7 +13,7 @@
 		<div class="inner_smenu">
 			<ul>
 				<li><a class="menu" href="main_add.html">챌린지</a></li>
-				<li><a href="challenge_input.html">챌린지추가</a></li>
+				<li><a href="/app/challenge/cinsert">챌린지추가</a></li>
 				<li><a href="date_input.html">일정추가</a></li>
 				<li><a href="calendar.html">일정보기</a></li>
 				<li><a href="challenge_share.html">공유</a></li>
