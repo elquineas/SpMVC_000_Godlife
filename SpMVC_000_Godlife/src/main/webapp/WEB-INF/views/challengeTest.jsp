@@ -15,6 +15,7 @@
 <script>
 	var rootPath = "${rootPath}";
 </script>
+<script src="${rootPath}/res/js/challengeTest/recommend.js?${ver}"></script>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/sidebar.jsp" %>
