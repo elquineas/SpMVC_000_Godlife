@@ -15,7 +15,7 @@ import lombok.ToString;
 @Setter
 public class CInputDto {
 	
-	public long c_seq; //	BIGINT	not null	primary key  AUTO_INCREMENT,
+	public String c_code; //	BIGINT	not null	primary key ,
 	public String c_title; //	varchar(50)	NOT NULL,	
 	public String c_write; //	varchar(20),
 	public String c_start; //	varchar(20),		

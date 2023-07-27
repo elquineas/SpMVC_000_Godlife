@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
+
 <nav class="side_bar">
 	<a href="/app/challenge/" class="mainlogo"> 
 		<img src="${rootPath}/res/image/www2.png" width="250px" />
@@ -13,9 +14,9 @@
 		<div class="inner_smenu">
 			<ul>
 				<li><a class="menu" href="main_add.html">챌린지</a></li>
-				<li><a href="/app/challenge/cinsert">챌린지추가</a></li>
+				<li><a href="${rootPath}/challenge/cinsert">챌린지추가</a></li>
 				<li><a href="date_input.html">일정추가</a></li>
-				<li><a href="calendar.html">일정보기</a></li>
+				<li><a href="${rootPath}/challenge/list">일정보기</a></li>
 				<li><a href="challenge_share.html">공유</a></li>
 			</ul>
 		</div>

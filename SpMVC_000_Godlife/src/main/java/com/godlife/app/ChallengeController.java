@@ -1,5 +1,7 @@
 package com.godlife.app;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -26,16 +28,14 @@ public class ChallengeController {
 
 	@RequestMapping(value = {"/",""}, method = RequestMethod.GET)
 	public String home(Model model) {
-		return "/challenge/home";
+		
+		return "challenge/home";
 	}
 	
 	@RequestMapping(value = "/cinsert", method = RequestMethod.GET)
-	public String cinsert(Model model, HttpSession httpSession) {
+	public String cinsert(@ModelAttribute("CINP")CInputDto cinputDto) {
 		
-		
-		model.addAttribute("BODY", "CINPUT");
-		
-		return "/challenge/home";
+		return "challenge/cinput";
 	}
 
 	@RequestMapping(value = "/cinsert", method = RequestMethod.POST, 
@@ -49,5 +49,42 @@ public class ChallengeController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String list(@ModelAttribute("CINP")CInputDto cinputDto, Model model) {
+		
+		List<CInputDto> cinputList = cinputService.selectAll();
+		model.addAttribute("CHALLS", cinputList);
+		model.addAttribute("BODY", "LIST");
+		
+		return "challenge/list";
+		
+	}
+	
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String detail(String id, Model model) {
+
+		CInputDto cinputDto = cinputService.findById(id);
+
+		// SELECT 된 주소를 model에 담아서 view 로 전달
+		model.addAttribute("CHALL", cinputDto);
+
+		return "home";
+	}
+	
+	
+	@ModelAttribute("CINP")
+	public CInputDto cinputDto() {
+
+		CInputDto cinputDto = CInputDto.builder()
+					    .c_title("")		
+					    .c_write("")	
+					    .c_start("")			
+					    .c_end("")	
+					    .c_count(0)			
+					    .c_detail("")
+						.build();
+		return cinputDto;
+		
+	}
 	
 }
