@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("TEST");
+  console.log("recommend");
+  const add_challenge_box = document.querySelector("button#add_challenge");
   const challenge_list_box = document.querySelector(
     "div.challenge.challenge_box"
   );
@@ -12,24 +13,68 @@ document.addEventListener("DOMContentLoaded", () => {
   const challenge_list = document.querySelector("div.challenge_list");
 
   const challengeClickHandler = (e) => {
+    const challenge_input_list = document.querySelectorAll(
+      "div.challenge_list input"
+    );
     const challenge_box = e.target;
     if (challenge_box.tagName !== "SPAN") {
       return false;
     }
 
     const id = challenge_box.dataset.id;
-    console.log(id);
-    // challenge_div = document.createElement("div.challenge.choice_box");
-    // challenge_div.innerHTML = text.replaceAll(
-    //   `<input id="u_challenge" placeholder="일정을 추가해주세요."/>`
-    //   `${mName}`,
-    //   `<span class="search-item">${mName}</span>`
-    // );
-    // mem_div.dataset.mName = member.m_name;
-    // mem_div.dataset.mTel = member.m_tel;
-    // mem_div.dataset.mCode = member.m_code;
-    // result_list.appendChild(mem_div);
-  };
+    const check = challenge_input_list.length;
+    // console.log(id);
+    // console.log(check);
 
+    // const challenge_div = document.createElement();
+    if (check < 2) {
+      // input 태그를 만든다.
+      var $input = document.createElement("input");
+      // 태그의 id를 설정한다.
+      $input.id = "u_challenge2";
+      // 태그의 type을 설정한다.
+      $input.type = "textbox";
+      // 태그의 value를 설정한다.
+      $input.value = id;
+      // 태그의 placeholder를 설정한다
+      $input.placeholder = "일정을 추가해주세요.";
+      // body에 가장 아래, 즉 </body>태그의 바로 위에 input 태그를 푸가한다.
+      challenge_list?.appendChild($input);
+    } else if (check < 3) {
+      var $input = document.createElement("input");
+      $input.id = "u_challenge3";
+      $input.type = "textbox";
+      $input.value = id;
+      $input.placeholder = "일정을 추가해주세요.";
+      challenge_list?.appendChild($input);
+    }
+    // challenge_list.appendChild(challenge_div);
+  };
   challenge_list_box?.addEventListener("click", challengeClickHandler);
+
+  const addChallengeClickHandler = (e) => {
+    const challenge_input_list = document.querySelectorAll(
+      "div.challenge_list input"
+    );
+    const challenge_box = e.target;
+    if (challenge_box.tagName !== "BUTTON") {
+      return false;
+    }
+
+    const check = challenge_input_list.length;
+    if (check < 2) {
+      var $input = document.createElement("input");
+      $input.id = "u_challenge2";
+      $input.type = "textbox";
+      $input.placeholder = "일정을 추가해주세요.";
+      challenge_list?.appendChild($input);
+    } else if (check < 3) {
+      var $input = document.createElement("input");
+      $input.id = "u_challenge3";
+      $input.type = "textbox";
+      $input.placeholder = "일정을 추가해주세요.";
+      challenge_list?.appendChild($input);
+    }
+  };
+  add_challenge_box?.addEventListener("click", addChallengeClickHandler);
 });
