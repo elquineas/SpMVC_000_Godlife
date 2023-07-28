@@ -16,7 +16,7 @@
 <link href="${rootPath}/res/css/challenge/list.css" rel="stylesheet">
 <link href="${rootPath}/res/css/challenge/nav.css" rel="stylesheet">
 <link href="${rootPath}/res/css/challenge/table.css" rel="stylesheet">
-
+<link href="${rootPath}/res/css/challenge/swap.css" rel="stylesheet">
 
 
 <script>
@@ -25,4 +25,9 @@
 
 <script src="${rootPath}/res/js/challenge/detail.js"></script>
 <script src="${rootPath}/res/js/challenge/list.js"></script>
+<script src="${rootPath}/res/js/challenge/input.js"></script>
+<script src="${rootPath}/res/js/challenge/input2.js"></script>
+<script src="${rootPath}/res/js/challenge/sinput.js"></script>
+<script src="${rootPath}/res/js/challenge/sdetail.js"></script>
+<script src="${rootPath}/res/js/challenge/slist.js"></script>
 </head>

@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const btn_update = document.querySelector("button.detail.update");
-  const btn_delete = document.querySelector("button.detail.delete");
+  const btn_supdate = document.querySelector("button.detail.supdate");
+  const btn_sdelete = document.querySelector("button.detail.sdelete");
 
-  btn_update?.addEventListener("click", (e) => {
+  btn_supdate?.addEventListener("click", (e) => {
     const id = e.target.dataset.id;
-    document.location.href = `${rootPath}/challenge/update?id=${id}`;
+    document.location.href = `${rootPath}/challenge/supdate?id=${id}`;
   });
 
-  btn_delete?.addEventListener("click", (e) => {
+  btn_sdelete?.addEventListener("click", (e) => {
     // button tag 가 가장 중앙에 있기 떄문에
     // click event e.target 은 delete button 이 된다.
     const btn = e.target;
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 겹쳐서 표현된다.
                 뒤로가기 화면을 없애는 효과를 낸다.
         */
-      document.location.replace(`${rootPath}/challenge/delete?id=${id}`);
+      document.location.replace(`${rootPath}/challenge/sdelete?id=${id}`);
       //   document.location.href = `${rootPath}/delete?id=${id}`;
     }
   });

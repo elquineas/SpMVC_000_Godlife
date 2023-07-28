@@ -15,7 +15,7 @@
 			<ul>
 				<li><a class="menu" href="main_add.html">챌린지</a></li>
 				<li><a href="${rootPath}/challenge/cinsert">챌린지추가</a></li>
-				<li><a href="date_input.html">일정추가</a></li>
+				<li><a href="${rootPath}/challenge/sinsert">일정추가</a></li>
 				<li><a href="${rootPath}/challenge/list">일정보기</a></li>
 				<li><a href="challenge_share.html">공유</a></li>
 			</ul>

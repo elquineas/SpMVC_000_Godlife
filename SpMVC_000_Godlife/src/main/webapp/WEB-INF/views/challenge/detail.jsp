@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
 <article class="detail data">
 
 	<div>
@@ -36,8 +44,11 @@
 <article class="detail button">
 
 	<div>
-		<button class="detail list">리스트로</button>
-		<button class="detail update" data-id="${BOOK.b_code}">수정</button>
-		<button class="detail delete" data-id="${BOOK.b_code}">삭제</button>
+		<button class="detail update" data-id="${CHALL.c_code}">수정</button>
+		<button class="detail delete" data-id="${CHALL.c_code}">삭제</button>
 	</div>
+
 </article>
+
+</body>
+</html>

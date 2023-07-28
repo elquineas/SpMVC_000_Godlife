@@ -18,10 +18,10 @@ public class CInputServiceImplV1 implements CInputService {
 		this.cinputDao = cinputDao;
 	}
 
-	public int insert(CInputDto cinputDto) {
+	public int cinsert(CInputDto cinputDto) {
 		
 		
-		return cinputDao.insert(cinputDto);
+		return cinputDao.cinsert(cinputDto);
 	}
 
 	public List<CInputDto> selectAll() {
@@ -35,6 +35,17 @@ public class CInputServiceImplV1 implements CInputService {
 		CInputDto cinputDto = cinputDao.findById(id);
 		
 		return cinputDto;
+	}
+
+	public int update(CInputDto cinputdto) {
+		
+		int result = cinputDao.update(cinputdto);
+		return result;
+	}
+
+	public int delete(String id) {
+		int result = cinputDao.delete(id);
+		return result;
 	}
 
 }

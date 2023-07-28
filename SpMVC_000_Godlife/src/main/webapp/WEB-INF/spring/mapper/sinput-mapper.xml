@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.godlife.app.dao.SInputDao">
+ 	
+ <insert id="sinsert">
+ 
+ insert into sinput
+ (s_code, s_title, s_write, s_start, s_end, s_detail
+)values 
+(#{s_code}, #{s_title}, #{s_write}, #{s_start}, #{s_end}, #{s_detail})
+ 
+ </insert>
+ 
+ 	<update id="supdate">
+
+		UPDATE sinput
+		SET s_title = #{s_title},
+		s_write = #{s_write},
+		s_start = #{s_start},
+		s_end= #{s_end},
+		s_detail= #{s_detail}
+		WHERE s_code = #{s_code}
+
+	</update>
+ 	
+ </mapper> 

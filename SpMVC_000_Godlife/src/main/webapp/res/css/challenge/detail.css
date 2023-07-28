@@ -1,8 +1,15 @@
 @charset "UTF-8";
 
 article.detail {
-  width: 80%;
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  width: 30%;
   margin: 5px auto;
+}
+
+article.detail.button {
+  top: 70%;
 }
 
 article.detail div {
@@ -14,7 +21,7 @@ article.detail div {
 
 article.detail strong {
   flex: 1;
-  background-color: #ddd;
+  background-color: #fdefc2;
   text-align: right;
 }
 
@@ -25,7 +32,6 @@ article.detail span {
 
 article.detail span {
   flex: 3;
-  border: 1px solid #ddd;
   text-align: left;
   margin-left: 3px;
 }
@@ -56,7 +62,7 @@ button.detail.list {
 }
 
 button.detail.update {
-  background-color: blue;
+  background-color: #e4dffd;
 }
 
 button.detail.delete {

@@ -7,9 +7,24 @@
  	
  <insert id="cinsert">
  
- 
- 
+ insert into cinput
+ (c_code, c_title, c_write, c_start, c_end, c_count, c_detail
+)values 
+(#{c_code}, #{c_title}, #{c_write}, #{c_start}, #{c_end}, #{c_count}, #{c_detail})
  
  </insert>
+ 
+ 	<update id="update">
+
+		UPDATE cinput
+		SET c_title = #{c_title},
+		c_write = #{c_write},
+		c_start = #{c_start},
+		c_end= #{c_end},
+		c_count= #{c_count},
+		c_detail= #{c_detail}
+		WHERE c_code = #{c_code}
+
+	</update>
  	
  </mapper> 

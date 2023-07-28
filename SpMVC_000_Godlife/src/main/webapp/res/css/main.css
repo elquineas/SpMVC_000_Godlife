@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @font-face {
   font-family: Nanum Seongsirce;
-  src: url(/app/resources/doc/font.ttf);
+  src: url(/app/res/doc/font.ttf);
   font-weight: bold;
 }
 * {
