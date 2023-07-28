@@ -7,4 +7,8 @@
 	<definition name="challenge/*" extends="default">
 		<put-attribute name="main-content" value="/WEB-INF/views/challenge/{1}.jsp"/>
 	</definition>
+	
+	<definition name="challengeTest/*" extends="default2">
+		<put-attribute name="main-content" value="/WEB-INF/views/challengeTest/{1}.jsp"/>
+	</definition>
 </tiles-definitions>

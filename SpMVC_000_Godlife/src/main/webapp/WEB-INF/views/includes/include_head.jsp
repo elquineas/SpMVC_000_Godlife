@@ -16,8 +16,8 @@
 <link href="${rootPath}/res/css/challenge/list.css" rel="stylesheet">
 <link href="${rootPath}/res/css/challenge/nav.css" rel="stylesheet">
 <link href="${rootPath}/res/css/challenge/table.css" rel="stylesheet">
-
-
+<link href="${rootPath}/res/css/challengeTest/challengeTest.css" rel="stylesheet">
+<link href="${rootPath}/res/css/challengeTest/share.css" rel="stylesheet">
 
 <script>
 	var rootPath = "${rootPath}"
@@ -25,4 +25,5 @@
 
 <script src="${rootPath}/res/js/challenge/detail.js"></script>
 <script src="${rootPath}/res/js/challenge/list.js"></script>
+<script src="${rootPath}/res/js/challengeTest/recommend.js"></script>
 </head>
