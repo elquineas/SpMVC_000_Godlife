@@ -10,8 +10,17 @@
 		<put-attribute name="nav" value="/WEB-INF/views/includes/include_nav.jsp" />
 	</definition>
 	
-	
 	<definition name="/challenge/home" extends="default">
+		<put-attribute name="main-content" value=""/>
+	</definition>
+	
+	<!-- TEST -->
+	<definition name="default2" template="/WEB-INF/views/challengeTest.jsp">
+		<put-attribute name="head2" value="/WEB-INF/views/includes/include_head.jsp" />
+		<put-attribute name="nav2" value="/WEB-INF/views/includes/include_nav.jsp" />
+	</definition>
+	
+	<definition name="challengeTest" extends="default2">
 		<put-attribute name="main-content" value=""/>
 	</definition>
 	

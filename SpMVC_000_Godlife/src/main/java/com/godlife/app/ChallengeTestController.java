@@ -14,6 +14,12 @@ public class ChallengeTestController {
 
 	@RequestMapping(value = {"/",""}, method = RequestMethod.GET)
 	public String home(Model model) {
-		return "challengeTest";
+		return "challengeTest/recommend";
+	}
+	
+
+	@RequestMapping(value = {"/share"}, method = RequestMethod.GET)
+	public String share(Model model) {
+		return "challengeTest/share";
 	}
 }

@@ -16,8 +16,13 @@
 <link href="${rootPath}/res/css/challenge/list.css" rel="stylesheet">
 <link href="${rootPath}/res/css/challenge/nav.css" rel="stylesheet">
 <link href="${rootPath}/res/css/challenge/table.css" rel="stylesheet">
+<<<<<<< HEAD
 <link href="${rootPath}/res/css/challenge/swap.css" rel="stylesheet">
 
+=======
+<link href="${rootPath}/res/css/challengeTest/challengeTest.css" rel="stylesheet">
+<link href="${rootPath}/res/css/challengeTest/share.css" rel="stylesheet">
+>>>>>>> a7097a388e95ea00161cc7bc13f582927dbd7fdc
 
 <script>
 	var rootPath = "${rootPath}"
@@ -25,9 +30,13 @@
 
 <script src="${rootPath}/res/js/challenge/detail.js"></script>
 <script src="${rootPath}/res/js/challenge/list.js"></script>
+<<<<<<< HEAD
 <script src="${rootPath}/res/js/challenge/input.js"></script>
 <script src="${rootPath}/res/js/challenge/input2.js"></script>
 <script src="${rootPath}/res/js/challenge/sinput.js"></script>
 <script src="${rootPath}/res/js/challenge/sdetail.js"></script>
 <script src="${rootPath}/res/js/challenge/slist.js"></script>
+=======
+<script src="${rootPath}/res/js/challengeTest/recommend.js"></script>
+>>>>>>> a7097a388e95ea00161cc7bc13f582927dbd7fdc
 </head>

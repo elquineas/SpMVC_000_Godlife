@@ -1,9 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="t"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
-<c:set value="ver_0042" var="ver" />
 <!DOCTYPE html>
+<html>
+<t:insertAttribute name="head2" />
+<body>
+
+	<t:insertAttribute name="nav2" />
+	<section class="main">
+
+		<t:insertAttribute name="main-content" />
+
+	</section>
+</body>
+</html>
+
+
+<%-- 
 <html>
 <head>
 <meta charset="UTF-8">
@@ -24,3 +39,4 @@
 	</div>
 </body>
 </html>
+ --%>

@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (challenge_box.tagName !== "SPAN") {
       return false;
     }
-
     const id = challenge_box.dataset.id;
+    const text = challenge_box.textContent;
     const check = challenge_input_list.length;
     // console.log(id);
     // console.log(check);
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // 태그의 type을 설정한다.
       $input.type = "textbox";
       // 태그의 value를 설정한다.
-      $input.value = id;
+      $input.value = text;
       // 태그의 placeholder를 설정한다
       $input.placeholder = "일정을 추가해주세요.";
       // body에 가장 아래, 즉 </body>태그의 바로 위에 input 태그를 푸가한다.
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
       var $input = document.createElement("input");
       $input.id = "u_challenge3";
       $input.type = "textbox";
-      $input.value = id;
+      $input.value = text;
       $input.placeholder = "일정을 추가해주세요.";
       challenge_list?.appendChild($input);
     }
