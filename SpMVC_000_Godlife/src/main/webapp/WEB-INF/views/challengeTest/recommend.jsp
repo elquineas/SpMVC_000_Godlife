@@ -25,18 +25,20 @@
 			</div>
 		</fieldset>
 	</div>
-	<div class="challenge choice_box">
-		<div>
-			<button id="add_challenge" type="button">일정 추가(최대 3개)</button>
+	<form action="" >
+		<div class="challenge choice_box">
+			<div>
+				<button id="add_challenge" type="button">일정 추가(최대 3개)</button>
+			</div>
+			<div class="challenge challenge_list">
+				<input id="u_challenge" placeholder="일정을 추가해주세요."/>
+			</div>
 		</div>
-		<div class="challenge challenge_list">
-			<input id="u_challenge" placeholder="일정을 추가해주세요."/>
+		<div class="challenge button_box">
+			<button type="button">SKIP</button>
+			<button>저장하기</button>
 		</div>
-	</div>
-	<div class="challenge button_box">
-		<button>SKIP</button>
-		<button>저장하기</button>
-	</div>
+	</form>
 	<!-- 버튼 CRUD 추가해야함 -->
 </div>
 <!-- <div class=""></div> -->

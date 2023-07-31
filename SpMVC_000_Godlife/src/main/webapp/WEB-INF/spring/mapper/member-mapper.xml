@@ -21,8 +21,8 @@
  	
  	<insert id="joinSave">
  		INSERT
- 		  INTO tbl_user(u_email,u_password,u_name,u_tel,u_birth,u_auth,u_useyn)
- 		VALUES(#{u_email}, #{u_password}, #{u_name}, #{u_tel}, #{u_birth},'U','Y')
+ 		  INTO tbl_user(u_email,u_password,u_name,u_nickname,u_tel,u_birth,u_auth,u_useyn)
+ 		VALUES(#{u_email}, #{u_password}, #{u_name}, #{u_nickname}, #{u_tel}, #{u_birth},'U','Y')
  	</insert>
  	
  	<select id="findIdByTel">

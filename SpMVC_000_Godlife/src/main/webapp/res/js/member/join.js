@@ -3,8 +3,9 @@ const INPUT_INDEX = {
   PASSWORD: 1,
   RE_PASSWORD: 2,
   USERNAME: 3,
-  TEL: 4,
-  BIRTH: 5,
+  NICKNAME: 4,
+  TEL: 5,
+  BIRTH: 6,
 };
 
 document.addEventListener("DOMContentLoaded", () => {

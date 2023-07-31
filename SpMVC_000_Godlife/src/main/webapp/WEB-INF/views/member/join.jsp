@@ -45,6 +45,15 @@
 			<div class="msg_div checked_box"></div>
 			<div class="contain_box">
 				<span class="icon-box"> 
+					<label for="u_nickname"> 
+						<i class="fa fa-user" aria-hidden="true"></i> <!-- <i class="fa fa-mobile fa-lg" aria-hidden="true"></i> -->
+					</label>
+				</span> 
+				<input class="login_input" id="u_nickname" name="u_nickname" placeholder="닉네임" />
+			</div>
+			<div class="msg_div checked_box"></div>
+			<div class="contain_box">
+				<span class="icon-box"> 
 					<label for="u_tel"> <iclass="fa fa-mobile fa-lg" aria-hidden="true"></i></label>
 				</span> 
 				<input class="login_input" id="u_tel" name="u_tel" placeholder="전화번호 ex)010-0000-0000" />
