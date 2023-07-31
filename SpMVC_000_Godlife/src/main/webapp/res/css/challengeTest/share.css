@@ -79,10 +79,10 @@ div.share.container {
   background-color: #e4dffd;
   display: flex;
   border-radius: 20px;
-  width: 70%;
-  height: 200px;
+  width: 60%;
+  height: 170px;
   /* text-align: center; */
-  margin: 0 auto;
+  margin: 0 auto 30px;
   padding: 10px;
   text-align: center;
   justify-content: center;

@@ -1,5 +1,8 @@
 package com.godlife.app.service.impl;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Service;
 
 import com.godlife.app.dao.MemberDao;
@@ -19,7 +22,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public String loginCheck(UserDto uDto) {
+	public String loginCheck(UserDto uDto, HttpServletRequest request) {
+		HttpSession session = request.getSession();
 		int result = 0;
 		
 		// ID 있는지 체크
@@ -33,6 +37,8 @@ public class MemberServiceImpl implements MemberService{
 		if(result < 1){
 			return "WRONGPW";
 		}else {
+			uDto = mDao.userInfo(uDto);
+			session.setAttribute("USER_INFO", uDto);
 			return "YES";
 		}
 	}

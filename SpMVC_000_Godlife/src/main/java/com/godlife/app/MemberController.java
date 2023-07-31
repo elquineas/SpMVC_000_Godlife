@@ -3,6 +3,9 @@ package com.godlife.app;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.godlife.app.dao.MemberDao;
@@ -22,6 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequestMapping(value = "/member")
+@SessionAttributes("USER")
 public class MemberController {
 	@Autowired
 	private MailService mailService;
@@ -33,8 +38,9 @@ public class MemberController {
 
 	@ResponseBody
 	@RequestMapping(value = "/login_check", method = RequestMethod.GET)
-	public String login_check(UserDto uDto, Model model) {
-		String result = memberService.loginCheck(uDto);
+	public String login_check(UserDto uDto, Model model, HttpServletRequest request) {
+		log.debug("(컨트롤러)USER CHECK : {}",uDto);
+		String result = memberService.loginCheck(uDto,request);
 		return result;
 	}	
 
@@ -81,6 +87,8 @@ public class MemberController {
 		return result;
 	}
 	
+
+	
 	@RequestMapping("/findId/sendMail")
 	@ResponseBody
 	public String sendEmail(String tel, String email) throws Exception {
@@ -109,9 +117,7 @@ public class MemberController {
 		String strDate = dateFormat.format(date);
 		String strTime = timeFormat.format(date);
 		int intYear = Integer.valueOf(strDate);
-		UserDto uDto = UserDto.builder()
-					.build();
-		return uDto;
+		return UserDto.builder().build();
 	}
 	
 }

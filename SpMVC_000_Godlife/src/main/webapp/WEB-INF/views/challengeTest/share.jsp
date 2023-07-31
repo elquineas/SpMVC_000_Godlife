@@ -6,7 +6,7 @@
 <div class="phone_size">
 	<div class="search_box">
 		<form>
-			<input class="search_txt" type="text" name="search" id="search_input" placeholder="챌린지를 검색해보세요"/> 
+			<input class="search_txt" type="text" name="search" id="search_input" value="${SEARCH}" placeholder="챌린지를 검색해보세요"/> 
 			<button class="search_btn_box">
 				<span class="search_btn">
 					<i class="fas fa-search"></i>
@@ -15,40 +15,48 @@
 		</form>
 	</div>
 	<div class="share container">
-		<div class="share_box">
-			<div class="share profile">
-				<div class="profile_img">
-					<img src="${rootPath}/res/image/temp.png" />
+		<c:forEach  items="${CLIST}" var="LIST">
+			<div class="share_box">
+				<div class="share profile">
+					<div class="profile_img">
+						<img src="${rootPath}/res/image/temp.png" />
+					</div>
+					<div class="profile_text">
+						<div>${LIST.u_nickname}</div>
+					</div>
 				</div>
-				<div class="profile_text">
-					<div>닉네임</div>
+				<div class="share content">
+					<div class="text">${LIST.c_memo}</div>
+					<div class="mession">
+						<span>${LIST.c_title}</span>
+					</div>
+					<div class="share achieve">
+						<div>
+							시작일자 : ${LIST.c_sdate} <br>
+							도전일자 : ${LIST.c_edate}
+						</div>
+						<div>
+							목표횟수 : ${LIST.c_achieve}<br>
+							성공횟수 : ${LIST.c_count}
+						</div>
+						<div>
+						<c:forEach begin="1" end="${LIST.star}">
+							<i class="fa fa-star" aria-hidden="true"></i>
+						</c:forEach>
+						<c:forEach begin="1" end="${5-LIST.star}">
+							<i class="fa fa-star-o" aria-hidden="true"></i> 
+						</c:forEach>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="share content">
-				<div class="text">작은거라도 꾸준히 습관을 만들자</div>
-				<div class="mession">
-					<span>#물 1L 마시기</span>
-				</div>
-				<div class="share achieve">
-					<div>
-						도전일자 : 30일
-					</div>
-					<div>
-						성공일자 : 0일
-					</div>
-					<div>
-						<i class="fa fa-star-o" aria-hidden="true"></i> 
-						<i class="fa fa-star-o" aria-hidden="true"></i> 
-						<i class="fa fa-star-o" aria-hidden="true"></i> 
-						<i class="fa fa-star-o" aria-hidden="true"></i> 
-						<i class="fa fa-star-o" aria-hidden="true"></i>
-					</div>
-				</div>
-			</div>
-
-		</div>
+		</c:forEach>
 	</div>
 	
+<!-- 							<i class="fa fa-star-o" aria-hidden="true"></i> 
+							<i class="fa fa-star-o" aria-hidden="true"></i> 
+							<i class="fa fa-star-o" aria-hidden="true"></i> 
+							<i class="fa fa-star-o" aria-hidden="true"></i> -->
 	<!-- 
 	
 				<span class="profile_lv"> <i class="fa fa-user"

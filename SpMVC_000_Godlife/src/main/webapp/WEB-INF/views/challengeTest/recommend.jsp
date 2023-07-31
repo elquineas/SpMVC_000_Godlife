@@ -33,6 +33,10 @@
 			<input id="u_challenge" placeholder="일정을 추가해주세요."/>
 		</div>
 	</div>
+	<div class="challenge button_box">
+		<button>SKIP</button>
+		<button>저장하기</button>
+	</div>
 	<!-- 버튼 CRUD 추가해야함 -->
 </div>
 <!-- <div class=""></div> -->

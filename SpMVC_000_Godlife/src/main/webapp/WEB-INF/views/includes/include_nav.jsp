@@ -13,11 +13,12 @@
 	<div class="side_menu">
 		<div class="inner_smenu">
 			<ul>
-				<li><a class="menu" href="main_add.html">챌린지</a></li>
+				<li><a href="${rootPath}/challengeTest">챌린지</a></li>
 				<li><a href="${rootPath}/challenge/cinsert">챌린지추가</a></li>
 				<li><a href="${rootPath}/challenge/sinsert">일정추가</a></li>
 				<li><a href="${rootPath}/challenge/list">일정보기</a></li>
-				<li><a href="challenge_share.html">공유</a></li>
+				<li><a href="${rootPath}/challengeTest/share">공유</a></li>
+				<li><a href="${rootPath}/logout">로그아웃</a></li>
 			</ul>
 		</div>
 	</div>
