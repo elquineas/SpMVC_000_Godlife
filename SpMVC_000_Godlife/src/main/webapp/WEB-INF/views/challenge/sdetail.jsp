@@ -9,39 +9,39 @@
 </head>
 <body>
 
-<article class="detail data">
+<article class="sdetail data">
 
 	<div>
-		<strong>회원코드</strong><span>${SCHA.s_code}</span>
+		<strong>uemail</strong><span>${SINP.s_uemail}</span>
 	</div>
 	
 	<div>
-		<strong>일정</strong><span>${SCHA.s_title}</span>
+		<strong>제목</strong><span>${SINP.s_title}</span>
 	</div>
 	
 	<div>
-		<strong>작성일</strong><span>${SCHA.s_write}</span>
+		<strong>작성일</strong><span>${SINP.s_write}</span>
 	</div>
 	
 	<div>
-		<strong>시작</strong><span>${SCHA.s_start}</span>
+		<strong>시작</strong><span>${SINP.s_sdate}</span>
 	</div>
 	
 	<div>
-		<strong>종료</strong><span>${SCHA.s_end}</span>
+		<strong>종료</strong><span>${SINP.s_edate}</span>
 	</div>
 	
 	<div>
-		<strong>내용</strong><span>${SCHA.s_detail}</span>
+		<strong>내용</strong><span>${SINP.s_memo}</span>
 	</div>
 	
 </article>
 
-<article class="detail button">
+<article class="sdetail button">
 
 	<div>
-		<button class="detail supdate" data-id="${SCHA.s_code}">수정</button>
-		<button class="detail sdelete" data-id="${SCHA.s_code}">삭제</button>
+		<button class="sdetail supdate" data-id="${SINP.s_seq}">수정</button>
+		<button class="sdetail sdelete" data-id="${SINP.s_seq}">삭제</button>
 	</div>
 
 </article>

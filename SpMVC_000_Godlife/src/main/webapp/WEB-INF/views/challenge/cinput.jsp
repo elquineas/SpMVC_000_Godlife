@@ -19,13 +19,14 @@
 								<div class="center-wrap">
 									<div class="section text-center">
 										<form method="post" class="main cinput">
+
 											<div>
-												<label>회원코드</label> <input name="c_code" placeholder="회원코드"
-													value="${CINP.c_code}" />
+												<label>email</label> <input name="c_uemail" placeholder="email"
+													value="${CINP.c_uemail}" />
 											</div>
 
 											<div>
-												<label>챌린지</label> <input name="c_title" placeholder="챌린지"
+												<label>제목</label> <input name="c_title" placeholder="제목"
 													value="${CINP.c_title}" />
 											</div>
 
@@ -35,18 +36,18 @@
 											</div>
 
 											<div>
-												<label>시작일</label> <input name="c_start" type="date"
-													placeholder="시작일" value="${CINP.c_start}" />
+												<label>시작일</label> <input name="c_sdate" type="date"
+													placeholder="시작일" value="${CINP.c_sdate}" />
 											</div>
 
 											<div>
-												<label>종료일</label> <input name="c_end" type="date"
-													placeholder="종료일" value="${CINP.c_end}" />
+												<label>종료일</label> <input name="c_edate" type="date"
+													placeholder="종료일" value="${CINP.c_edate}" />
 											</div>
-
+											
 											<div>
-												<label>내용</label> <input name="c_detail" placeholder="내용"
-													value="${CINP.c_detail}" />
+												<label>내용</label> <input name="c_memo" placeholder="내용"
+													value="${CINP.c_memo}" />
 											</div>
 
 											<div>
@@ -62,13 +63,14 @@
 								<div class="center-wrap">
 									<div class="section text-center">
 										<form method="post" class="main coinput">
+
 											<div>
-												<label>회원코드</label> <input name="c_code" placeholder="회원코드"
-													value="${CINP.c_code}" />
+												<label>email</label> <input name="c_uemail" placeholder="email"
+													value="${CINP.c_uemail}" />
 											</div>
 
 											<div>
-												<label>챌린지</label> <input name="c_title" placeholder="챌린지"
+												<label>제목</label> <input name="c_title" placeholder="제목"
 													value="${CINP.c_title}" />
 											</div>
 
@@ -76,17 +78,16 @@
 												<label>작성일</label> <input name="c_write" placeholder="작성일"
 													value="${CINP.c_write}" />
 											</div>
-
+											
 											<div>
-												<label>횟수</label> <input name="c_count" 
-													placeholder="횟수" value="${CINP.c_count}" />
+												<label>목표횟수</label> <input name="c_achieve" 
+													placeholder="종료일" value="${CINP.c_achieve}" />
 											</div>
-
+											
 											<div>
-												<label>내용</label> <input name="c_detail" placeholder="내용"
-													value="${CINP.c_detail}" />
+												<label>내용</label> <input name="c_memo" placeholder="내용"
+													value="${CINP.c_memo}" />
 											</div>
-
 											<div>
 												<label></label>
 												<button class="button coinput" type="button">추가하기</button>

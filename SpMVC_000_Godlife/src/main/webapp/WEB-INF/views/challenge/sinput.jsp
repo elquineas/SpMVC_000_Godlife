@@ -13,13 +13,14 @@
 								<div class="center-wrap3">
 									<div class="section text-center">
 										<form method="post" class="main sinput">
+
 											<div>
-												<label>회원코드</label> <input name="s_code" placeholder="회원코드"
-													value="${SINP.s_code}" />
+												<label>email</label> <input name="s_uemail" placeholder="email"
+													value="${SINP.s_uemail}" />
 											</div>
 
 											<div>
-												<label>일정</label> <input name="s_title" placeholder="일정"
+												<label>제목</label> <input name="s_title" placeholder="제목"
 													value="${SINP.s_title}" />
 											</div>
 
@@ -29,18 +30,18 @@
 											</div>
 
 											<div>
-												<label>시작일</label> <input name="s_start" type="date"
-													placeholder="시작일" value="${SINP.s_start}" />
+												<label>시작일</label> <input name="s_sdate" type="date"
+													placeholder="시작일" value="${SINP.s_sdate}" />
 											</div>
 
 											<div>
-												<label>종료일</label> <input name="s_end" type="date"
-													placeholder="종료일" value="${SINP.s_end}" />
+												<label>종료일</label> <input name="s_edate" type="date"
+													placeholder="종료일" value="${SINP.s_edate}" />
 											</div>
-
+											
 											<div>
-												<label>내용</label> <input name="s_detail" placeholder="내용"
-													value="${SINP.s_detail}" />
+												<label>내용</label> <input name="s_memo" placeholder="내용"
+													value="${SINP.s_memo}" />
 											</div>
 
 											<div>

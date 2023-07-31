@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.godlife.app.model.CInputDto;
 import com.godlife.app.model.SInputDto;
@@ -74,46 +76,95 @@ public class ChallengeController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(@ModelAttribute("CINP")CInputDto cinputDto, 
-			@ModelAttribute("SINP")SInputDto sinputDto, Model model) {
+			@ModelAttribute("SINP")SInputDto sinputDto,
+			@RequestParam(name="page" , required = false , defaultValue = "1") String page,
+			@RequestParam(name="search" , required = false , defaultValue = "-1") String search,
+			Model model) {
 		
-		List<CInputDto> cinputList = cinputService.selectAll();
-		List<SInputDto> sinputList = sinputService.selectAll();
+//		List<CInputDto> cinputList = cinputService.selectAll();
+//		List<SInputDto> sinputList = sinputService.selectAll();
 		
-		model.addAttribute("CHALLS", cinputList);
-		model.addAttribute("SCHAS", sinputList);
+		if(search.equals("-1")) {
+			cinputService.selectPage(page, model);
+			sinputService.selectPage(page, model);
+		} else {
+			cinputService.selectPage(page, model, search);
+			sinputService.selectPage(page, model, search);
+		}
+		
+		model.addAttribute("SEARCH", search);
+//		model.addAttribute("CHALLS", cinputList);
+//		model.addAttribute("SCHAS", sinputList);
 		
 		return "/challenge/list";
 		
 	}
 	
+	@RequestMapping(value = "/slist", method = RequestMethod.GET)
+	public String slist(@ModelAttribute("CINP")CInputDto cinputDto, 
+			@ModelAttribute("SINP")SInputDto sinputDto,
+			@RequestParam(name="page" , required = false , defaultValue = "1") String page,
+			@RequestParam(name="search" , required = false , defaultValue = "-1") String search,
+			Model model) {
+		
+//		List<CInputDto> cinputList = cinputService.selectAll();
+//		List<SInputDto> sinputList = sinputService.selectAll();
+		
+		if(search.equals("-1")) {
+			cinputService.selectPage(page, model);
+			sinputService.selectPage(page, model);
+		} else {
+			cinputService.selectPage(page, model, search);
+			sinputService.selectPage(page, model, search);
+		}
+		
+		model.addAttribute("SEARCH", search);
+//		model.addAttribute("CHALLS", cinputList);
+//		model.addAttribute("SCHAS", sinputList);
+		
+		return "/challenge/slist";
+		
+	}
+	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public String detail(String id, Model model) {
+	public String detail(@ModelAttribute("CINP") CInputDto cinputDto,
+			@RequestParam(value="c_seq", 
+			required = false, 
+			defaultValue = "0") 
+	long c_seq, 
+	 Model model) {
 
-		CInputDto cinputDto = cinputService.findById(id);
+		cinputDto = cinputService.findById(c_seq);
 
-		// SELECT 된 주소를 model에 담아서 view 로 전달
-		model.addAttribute("CHALL", cinputDto);
+		model.addAttribute("CINP", cinputDto);
 
 		return "/challenge/detail";
 	}
 	
 	@RequestMapping(value = "/sdetail", method = RequestMethod.GET)
-	public String sdetail(String id, Model model) {
+	public String sdetail(@ModelAttribute("SINP") SInputDto sinputDto,
+			@RequestParam(value="s_seq", 
+			required = false, 
+			defaultValue = "0") 
+	long s_seq, Model model) {
 
-		SInputDto sinputDto = sinputService.findById(id);
+		sinputDto = sinputService.findById(s_seq);
 
 		// SELECT 된 주소를 model에 담아서 view 로 전달
-		model.addAttribute("SCHA", sinputDto);
+		model.addAttribute("SINP", sinputDto);
 
 		return "/challenge/sdetail";
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String update(String id, Model model) {
+	public String update(@ModelAttribute("CINP") CInputDto cinputdto, @RequestParam(value="c_seq", 
+			required = false, 
+			defaultValue = "0") 
+	long c_seq, Model model) {
 
 		// 변경할 주소 데이터 SELETE 하여 model 에 담기
-		CInputDto cinputDto = cinputService.findById(id);
-		model.addAttribute("CHALL", cinputDto);
+		CInputDto cinputDto = cinputService.findById(c_seq);
+		model.addAttribute("CINP", cinputDto);
 
 
 		return "/challenge/update";
@@ -121,25 +172,28 @@ public class ChallengeController {
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
-	public String update(@ModelAttribute CInputDto cinputdto) {
+	public String update(@ModelAttribute("CINP") CInputDto cinputdto) {
+		
 		int result = cinputService.update(cinputdto);
 
-		String id = cinputdto.getC_code();
-			// update 가 성공하면 detail 화면을 보여서 변경 된것을 확인
+		long c_seq = cinputdto.getC_seq();
 		if (result > 0) {
-			return "redirect:/challenge/detail?id=" + id;
-			// update 가 실패하면 다시 update 화면으로 보내서 다시 변경하기
+			return "redirect:/challenge/detail?c_seq=" + c_seq;
 		} else {
-			return "redirect:/challenge/update?id=" + id;
+			return "redirect:/challenge/update?c_seq=" + c_seq;
 		}
 	}
 	
 	@RequestMapping(value = "/supdate", method = RequestMethod.GET)
-	public String supdate(String id, Model model) {
+	public String supdate(@ModelAttribute("SINP") SInputDto sinputDto,
+			@RequestParam(value="s_seq", 
+			required = false, 
+			defaultValue = "0") 
+	long s_seq, Model model) {
 
 		// 변경할 주소 데이터 SELETE 하여 model 에 담기
-		SInputDto sinputDto = sinputService.findById(id);
-		model.addAttribute("SCHA", sinputDto);
+		sinputDto = sinputService.findById(s_seq);
+		model.addAttribute("SINP", sinputDto);
 
 
 		return "/challenge/supdate";
@@ -150,40 +204,56 @@ public class ChallengeController {
 	public String supdate(@ModelAttribute SInputDto sinputdto) {
 		int result = sinputService.update(sinputdto);
 
-		String id = sinputdto.getS_code();
+		long s_seq = sinputdto.getS_seq();
 			// update 가 성공하면 detail 화면을 보여서 변경 된것을 확인
 		if (result > 0) {
-			return "redirect:/challenge/sdetail?id=" + id;
+			return "redirect:/challenge/sdetail?id=" + s_seq;
 			// update 가 실패하면 다시 update 화면으로 보내서 다시 변경하기
 		} else {
-			return "redirect:/challenge/supdate?id=" + id;
+			return "redirect:/challenge/supdate?id=" + s_seq;
 		}
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String delete(String id) {
-
-		int result = cinputService.delete(id);
+	public String delete(String c_seq) {
+		int result = cinputService.delete(c_seq);
 
 		if (result > 0) {
 			return "redirect:/challenge/list";
 		} else {
-			return "redirect:/challenge/detail?id=" + id;
+			return "redirect:/challenge/detail?id=" + c_seq;
 		}
 
 	}
 	
 	@RequestMapping(value = "/sdelete", method = RequestMethod.GET)
-	public String sdelete(String id) {
+	public String sdelete(String s_seq) {
 
-		int result = sinputService.delete(id);
+		int result = sinputService.delete(s_seq);
 
 		if (result > 0) {
 			return "redirect:/challenge/list";
 		} else {
-			return "redirect:/challenge/sdetail?id=" + id;
+			return "redirect:/challenge/sdetail?id=" + s_seq;
 		}
 
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/title/search", method = RequestMethod.GET,
+	produces = "application/json;charset=UTF-8")
+	public List<CInputDto> cTitleSearch(
+			@RequestParam(name= "c_title", required = false, defaultValue = "-1") String ctitle) {
+		
+		if(ctitle.equals("-1")) {
+			return null;
+		}
+		
+		log.debug("받은타이틀 {} ", ctitle);
+		
+		List<CInputDto> cList = cinputService.findByCTitle(ctitle);
+		
+		return cList;
 	}
 	
 	
@@ -200,13 +270,16 @@ public class ChallengeController {
 		String strTime = timeFormat.format(date);
 
 		CInputDto cinputDto = CInputDto.builder()
-						.c_code("")
-					    .c_title("")		
-					    .c_write(strDate)	
-					    .c_start("")			
-					    .c_end("")	
-					    .c_count(0)			
-					    .c_detail("")
+					 	.c_uemail("")
+					 	.c_title("")
+					 	.c_write(strDate)
+					 	.c_sdate("")
+					 	.c_edate("")
+					 	.c_achieve(0)
+					 	.c_count(0)
+					 	.c_memo("")
+					 	.c_share("")
+					 	.c_useyn("")
 						.build();
 		return cinputDto;
 		
@@ -223,13 +296,17 @@ public class ChallengeController {
 		String strTime = timeFormat.format(date);
 
 		SInputDto sinputDto = SInputDto.builder()
-						.s_code("")
-					    .s_title("")		
-					    .s_write(strDate)	
-					    .s_start("")			
-					    .s_end("")	
-					    .s_detail("")
-						.build();
+				.s_uemail("")
+				.s_title("")
+				.s_write(strDate)
+				.s_sdate("")
+				.s_edate("")
+				.s_achieve(0)
+				.s_count(0)
+				.s_memo("")
+				.s_share("")
+				.s_useyn("")
+				.build();
 		return sinputDto;
 		
 	}

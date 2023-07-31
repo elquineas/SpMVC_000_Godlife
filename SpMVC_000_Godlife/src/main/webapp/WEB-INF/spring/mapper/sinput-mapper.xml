@@ -7,23 +7,51 @@
  	
  <insert id="sinsert">
  
- insert into sinput
- (s_code, s_title, s_write, s_start, s_end, s_detail
+ insert into tbl_schedule
+ (s_uemail ,s_title, s_write, s_sdate, s_edate, 
+ s_achieve, s_count, s_memo, s_share, s_useyn
 )values 
-(#{s_code}, #{s_title}, #{s_write}, #{s_start}, #{s_end}, #{s_detail})
+(#{s_uemail} ,#{s_title}, #{s_write}, #{s_sdate}, #{s_edate},
+#{s_achieve}, #{s_count}, #{s_memo}, #{s_share}, #{s_useyn})
  
  </insert>
  
  	<update id="supdate">
 
-		UPDATE sinput
-		SET s_title = #{s_title},
-		s_write = #{s_write},
-		s_start = #{s_start},
-		s_end= #{s_end},
-		s_detail= #{s_detail}
-		WHERE s_code = #{s_code}
+		UPDATE tbl_schedule
+		SET 
+		s_uemail = #{s_uemail} ,
+		s_title = #{s_title}, 
+		s_write = #{s_write}, 
+		s_sdate = #{s_sdate}, 
+		s_edate = #{s_edate}, 
+ 		s_achieve = #{s_achieve}, 
+ 		s_count = #{s_count},
+ 		s_memo = #{s_memo}, 
+ 		s_share = #{s_share},
+ 		s_useyn = #{s_useyn}
+		WHERE s_seq = #{s_seq}
 
 	</update>
+	
+	<select id="selectSearchCount">
+	
+	SELECT COUNT(*) FROM tbl_schedule
+	WHERE
+		<foreach collection="list" item="S" separator=" OR ">
+			s_title LIKE CONCAT ('%', #{S}, '%')
+		</foreach>
+		
+	</select>
+	
+	<select id="selectSearchPage">
+
+	SELECT * FROM tbl_schedule
+	WHERE
+		<foreach collection="list" item="S" separator=" OR ">
+			s_title LIKE CONCAT ('%', #{S}, '%')
+		</foreach>
+		LIMIT #{limit} OFFSET #{offset}
+	</select>
  	
  </mapper> 

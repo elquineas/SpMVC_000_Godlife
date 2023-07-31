@@ -4,15 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   btn_update?.addEventListener("click", (e) => {
     const id = e.target.dataset.id;
-    document.location.href = `${rootPath}/challenge/update?id=${id}`;
+    document.location.href = `${rootPath}/challenge/update?c_seq=${id}`;
   });
-
   btn_delete?.addEventListener("click", (e) => {
     // button tag 가 가장 중앙에 있기 떄문에
     // click event e.target 은 delete button 이 된다.
     const btn = e.target;
     const id = btn.dataset.id;
-
     if (confirm("삭제한 데이터는 복구 할수 없습니다. /n 정말 삭제 할까요?")) {
       /*
             JS 에서 서버 요청한 후 화면에 대한 것
@@ -26,8 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 겹쳐서 표현된다.
                 뒤로가기 화면을 없애는 효과를 낸다.
         */
-      document.location.replace(`${rootPath}/challenge/delete?id=${id}`);
-      //   document.location.href = `${rootPath}/delete?id=${id}`;
+      document.location.replace(`${rootPath}/challenge/delete?c_seq=${id}`);
+      // document.location.href = `${rootPath}/challenge/delete?c_seq=${id}`;
     }
   });
 });

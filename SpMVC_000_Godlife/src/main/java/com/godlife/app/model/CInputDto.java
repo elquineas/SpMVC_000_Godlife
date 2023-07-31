@@ -15,12 +15,16 @@ import lombok.ToString;
 @Setter
 public class CInputDto {
 	
-	public String c_code; //	BIGINT	not null	primary key ,
-	public String c_title; //	varchar(50)	NOT NULL,	
-	public String c_write; //	varchar(20),
-	public String c_start; //	varchar(20),		
-	public String c_end; //	varchar(20),	
-	public int c_count; //	int,		
-	public String c_detail; // varchar(500)
+	public long c_seq; //	bigint		PRIMARY KEY
+	public String c_uemail; //	varchar(125)	NOT NULL	
+	public String c_title; //	varchar(125)	NOT NULL	
+	public String c_write; //	varchar(10)		
+	public String c_sdate; //	varchar(10)		
+	public String c_edate; //	varchar(10)		
+	public int c_achieve; //	int		
+	public int c_count; //	int		
+	public String c_memo; // 	varchar(200)		
+	public String c_share; //	varchar(2)	NOT NULL	
+	public String c_useyn; //	varchar(2)	NOT NULL	
 
 }

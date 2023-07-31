@@ -2,7 +2,7 @@ package com.godlife.app.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Select;
+import org.springframework.ui.Model;
 
 import com.godlife.app.model.SInputDto;
 
@@ -10,11 +10,17 @@ public interface SInputService {
 
 	public int sinsert(SInputDto sinputDto);
 
-	@Select(" SELECT * FROM sinput")
 	public List<SInputDto> selectAll();
+	
+	public List<SInputDto> selectPage(String page);
+
+	public void selectPage(String page, Model model);
+	public void selectPage(String page, Model model, String search);
+	
+	public List<SInputDto> findBySTitle(String stitle);
 
 	
-	public SInputDto findById(String id);
+	public SInputDto findById(long s_seq);
 
 	public int update(SInputDto sinputdto);
 

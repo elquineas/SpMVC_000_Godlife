@@ -7,24 +7,51 @@
  	
  <insert id="cinsert">
  
- insert into cinput
- (c_code, c_title, c_write, c_start, c_end, c_count, c_detail
+insert into tbl_challenge
+ (c_uemail ,c_title, c_write, c_sdate, c_edate, 
+ c_achieve, c_count, c_memo, c_share, c_useyn
 )values 
-(#{c_code}, #{c_title}, #{c_write}, #{c_start}, #{c_end}, #{c_count}, #{c_detail})
+(#{c_uemail} ,#{c_title}, #{c_write}, #{c_sdate}, #{c_edate},
+#{c_achieve}, #{c_count}, #{c_memo}, #{c_share}, #{c_useyn})
  
  </insert>
  
  	<update id="update">
 
-		UPDATE cinput
-		SET c_title = #{c_title},
-		c_write = #{c_write},
-		c_start = #{c_start},
-		c_end= #{c_end},
-		c_count= #{c_count},
-		c_detail= #{c_detail}
-		WHERE c_code = #{c_code}
+		UPDATE tbl_challenge
+		SET  
+		c_uemail = #{c_uemail} ,
+		c_title = #{c_title}, 
+		c_write = #{c_write}, 
+		c_sdate = #{c_sdate}, 
+		c_edate = #{c_edate}, 
+ 		c_achieve = #{c_achieve}, 
+ 		c_count = #{c_count}, 
+ 		c_memo = #{c_memo}, 
+ 		c_share = #{c_share},
+ 		c_useyn = #{c_useyn}
+		WHERE c_seq = #{c_seq}
 
 	</update>
+	
+	<select id="selectSearchCount">
+	
+	SELECT COUNT(*) FROM tbl_challenge
+	WHERE
+		<foreach collection="list" item="S" separator=" OR ">
+			c_title LIKE CONCAT ('%', #{S}, '%')
+		</foreach>
+		
+	</select>
+	
+	<select id="selectSearchPage">
+
+	SELECT * FROM tbl_challenge
+	WHERE
+		<foreach collection="list" item="S" separator=" OR ">
+			c_title LIKE CONCAT ('%', #{S}, '%')
+		</foreach>
+		LIMIT #{limit} OFFSET #{offset}
+	</select>
  	
  </mapper> 

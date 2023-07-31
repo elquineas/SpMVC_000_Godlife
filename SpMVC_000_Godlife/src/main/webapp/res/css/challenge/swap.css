@@ -155,7 +155,7 @@ h6 span {
   /* width: 100%; */
   width: 235%;
   padding: 0 35px;
-  top: 54%;
+  top: 62%;
   left: -65%;
   transform: translate3d(0, -50%, 35px) perspective(100px);
   z-index: 20;
@@ -181,7 +181,7 @@ h6 span {
   /* width: 100%; */
   width: 235%;
   padding: 0 35px;
-  top: 63%;
+  top: 71%;
   left: -65%;
   transform: translate3d(0, -50%, 35px) perspective(100px);
   z-index: 20;

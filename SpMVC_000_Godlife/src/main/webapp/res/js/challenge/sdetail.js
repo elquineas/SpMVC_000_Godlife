@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const btn_supdate = document.querySelector("button.detail.supdate");
-  const btn_sdelete = document.querySelector("button.detail.sdelete");
+  const btn_supdate = document.querySelector("button.sdetail.supdate");
+  const btn_sdelete = document.querySelector("button.sdetail.sdelete");
 
   btn_supdate?.addEventListener("click", (e) => {
     const id = e.target.dataset.id;

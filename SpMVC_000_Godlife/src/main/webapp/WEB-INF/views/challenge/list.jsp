@@ -25,25 +25,62 @@
 												<th>챌린지</th>
 												<th>시작</th>
 												<th>종료</th>
-												<th>횟수</th>
+												<th>목표횟수</th>
 
 											</tr>
-											<c:forEach begin="0" end="10" var="INDEX">
-												<c:set value="${CHALLS[INDEX]}" var="CHALL" />
-												<tr data-id="${CHALL.c_code}">
+											<c:forEach items="${CHALLS}" var="CHALL">
+												<tr data-id="${CHALL.c_seq}">
 													<td>${CHALL.c_title}</td>
-													<td>${CHALL.c_start}</td>
-													<td>${CHALL.c_end}</td>
-													<td>${CHALL.c_count}</td>
+													<td>${CHALL.c_sdate}</td>
+													<td>${CHALL.c_edate}</td>
+													<td>${CHALL.c_achieve}</td>
 												</tr>
 											</c:forEach>
 										</table>
-										<div class="main pagination">
+										<div class="list pagination">
 											<ul>
-												<c:forEach begin="1" end="10" var="PAGE">
-													<li>${PAGE}</li>
+
+												<c:if test="${PAGI.firstPageNum > 1}">
+
+													<li><a href="${rootPath}/challenge/list?page=1">&#124;&lt;</a>
+													</li>
+
+													<li><a
+														href="${rootPath}/challenge/list?page=${PAGI.pageNum -1} ">
+															&lt;</a></li>
+
+												</c:if>
+
+												<c:forEach begin="${PAGI.firstPageNum}"
+													end="${PAGI.lastPageNum}" var="PAGE">
+
+													<li class="${PAGI.pageNum == PAGE ? 'active' : ''}"><a
+														href="${rootPath}/challenge/list?page=${PAGE}&search=${SEARCH}">${PAGE}</a></li>
+
 												</c:forEach>
+
+												<li><a
+													href="${rootPath}/challenge/list?page=${PAGI.pageNum + 1}">
+														&gt;</a></li>
+
+
+												<c:if test="${PAGI.lastPageNum < PAGI.finalPageNum}">
+
+
+													<li><a
+														href="${rootPath}/challenge/list?page=${PAGI.finalPageNum}">&#124;&gt;</a>
+													</li>
+
+												</c:if>
 											</ul>
+										</div>
+
+										<div class="list challenge search">
+											<form>
+												<input name="page" hidden="hidden" value="${PAGI.pageNum}" />
+												<input name="search" placeholder="챌린지를 검색하세요" />
+												<button>검색</button>
+											</form>
 										</div>
 										<p class="mb-0 mt-4 text-center"></p>
 									</div>
@@ -60,21 +97,59 @@
 												<th>종료</th>
 
 											</tr>
-											<c:forEach begin="0" end="10" var="INDEX">
-												<c:set value="${SCHAS[INDEX]}" var="SCHA" />
-												<tr data-id="${SCHA.s_code}">
+											<c:forEach items="${SCHAS}" var="SCHA">
+												<tr data-id="${SCHA.s_seq}">
 													<td>${SCHA.s_title}</td>
-													<td>${SCHA.s_start}</td>
-													<td>${SCHA.s_end}</td>
+													<td>${SCHA.s_sdate}</td>
+													<td>${SCHA.s_edate}</td>
 												</tr>
 											</c:forEach>
+											
 										</table>
-										<div class="main pagination">
+										<div class="list pagination">
 											<ul>
-												<c:forEach begin="1" end="10" var="PAGE">
-													<li>${PAGE}</li>
+
+												<c:if test="${PAGI.firstPageNum > 1}">
+
+													<li><a href="${rootPath}/challenge/slist?page=1">&#124;&lt;</a>
+													</li>
+
+													<li><a
+														href="${rootPath}/challenge/slist?page=${PAGI.pageNum -1} ">
+															&lt;</a></li>
+
+												</c:if>
+
+												<c:forEach begin="${PAGI.firstPageNum}"
+													end="${PAGI.lastPageNum}" var="PAGE">
+
+													<li class="${PAGI.pageNum == PAGE ? 'active' : ''}"><a
+														href="${rootPath}/challenge/slist?page=${PAGE}&search=${SEARCH}">${PAGE}</a></li>
+
 												</c:forEach>
+
+												<li><a
+													href="${rootPath}/challenge/slist?page=${PAGI.pageNum + 1}">
+														&gt;</a></li>
+
+
+												<c:if test="${PAGI.lastPageNum < PAGI.finalPageNum}">
+
+
+													<li><a
+														href="${rootPath}/challenge/slist?page=${PAGI.finalPageNum}">&#124;&gt;</a>
+													</li>
+
+												</c:if>
 											</ul>
+										</div>
+
+										<div class="list challenge search">
+											<form>
+												<input name="page" hidden="hidden" value="${PAGI.pageNum}" />
+												<input name="search" placeholder="일정을 검색하세요" />
+												<button>검색</button>
+											</form>
 										</div>
 									</div>
 								</div>

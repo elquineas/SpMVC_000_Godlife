@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("form.main.coinput") ||
     document.querySelector("form.main.update");
 
-  const cinput_code = form_cinput?.querySelector("input[name='c_code']");
+  const cinput_seq = form_cinput?.querySelector("input[name='c_seq']");
 
   const cinput_ctitle = document.querySelector("input[name='c_title']");
   const cinput_cwrite = document.querySelector("input[name='c_write']");

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // data-id 속성에 설정된 값을 가져오기
       const id = tr.dataset.id;
 
-      document.location.href = `${rootPath}/challenge/detail?id=${id}`;
+      document.location.href = `${rootPath}/challenge/detail?c_seq=${id}`;
     }
   };
   list_table?.addEventListener("click", trClickHander);
