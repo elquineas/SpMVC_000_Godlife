@@ -6,14 +6,6 @@
 		<article class="detail data">
 		
 		<div>
-			<label>uemail</label> <input name="s_uemail" value="${SINP.s_uemail}"
-				readonly="readonly" />
-		</div>
-		<div class="message b_name">
-			<label></label><span></span>
-		</div>
-
-		<div>
 			<label>제목</label> <input name="s_title" value="${SINP.s_title}" />
 		</div>
 		<div class="message b_name">

@@ -5,6 +5,26 @@
   
  <mapper namespace="com.godlife.app.dao.CInputDao">
  	
+ <select id="selectAll">
+ 	SELECT c_seq,
+			   c_uemail,
+			   c_title,
+			   c_memo,	
+			   c_sdate,
+			   c_edate,
+			   IFNULL(c_achieve,(TIMESTAMPDIFF(DAY , c_sdate, c_edate)+1))AS c_achieve,
+			   c_count,
+			   c_share,
+			   c_useyn,
+		       u_nickname, 
+		       ROUND((c_count / (TIMESTAMPDIFF(DAY , c_sdate, c_edate)+1))*5) AS star
+		  FROM tbl_challenge
+		  LEFT JOIN tbl_user 
+		    ON c_uemail = u_email
+		 WHERE c_useyn = 'Y'
+		   AND c_uemail = #{u_email}
+ </select>	
+ 	
  <insert id="cinsert">
  
 insert into tbl_challenge
@@ -12,7 +32,7 @@ insert into tbl_challenge
  c_achieve, c_count, c_memo, c_share, c_useyn
 )values 
 (#{c_uemail} ,#{c_title}, #{c_write}, #{c_sdate}, #{c_edate},
-#{c_achieve}, #{c_count}, #{c_memo}, #{c_share}, #{c_useyn})
+#{c_achieve}, #{c_count}, #{c_memo}, 'Y', 'Y')
  
  </insert>
  
@@ -33,6 +53,8 @@ insert into tbl_challenge
 		WHERE c_seq = #{c_seq}
 
 	</update>
+	
+	
 	
 	<select id="selectSearchCount">
 	

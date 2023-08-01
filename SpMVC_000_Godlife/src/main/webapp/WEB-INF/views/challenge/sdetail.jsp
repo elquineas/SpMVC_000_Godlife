@@ -10,10 +10,6 @@
 <body>
 
 <article class="sdetail data">
-
-	<div>
-		<strong>uemail</strong><span>${SINP.s_uemail}</span>
-	</div>
 	
 	<div>
 		<strong>제목</strong><span>${SINP.s_title}</span>

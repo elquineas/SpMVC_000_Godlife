@@ -15,11 +15,6 @@
 										<form method="post" class="main sinput">
 
 											<div>
-												<label>email</label> <input name="s_uemail" placeholder="email"
-													value="${SINP.s_uemail}" />
-											</div>
-
-											<div>
 												<label>제목</label> <input name="s_title" placeholder="제목"
 													value="${SINP.s_title}" />
 											</div>

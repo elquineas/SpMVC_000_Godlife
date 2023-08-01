@@ -46,28 +46,28 @@ public class CInputServiceImplV1 implements CInputService {
 		return result;
 	}
 
-	public int delete(String id) {
-		int result = cinputDao.delete(id);
+	public int delete(String c_seq) {
+		int result = cinputDao.delete(c_seq);
 		return result;
 	}
 
-	public List<CInputDto> selectPage(String page) {
-		
-		try {
-			int intPageNum = Integer.valueOf(page);
-//			intPageNum = (intPageNum -1) * 10;
-			intPageNum = --intPageNum * 10;
-
-			int intLimit = 10;
-			return cinputDao.selectPage(intLimit, intPageNum);
-
-		} catch (Exception e) {
-			return null;
-		}
-	}
+//	public List<CInputDto> selectPage(String page) {
+//		
+//		try {
+//			int intPageNum = Integer.valueOf(page);
+////			intPageNum = (intPageNum -1) * 10;
+//			intPageNum = --intPageNum * 10;
+//
+//			int intLimit = 10;
+//			return cinputDao.selectPage(intLimit, intPageNum);
+//
+//		} catch (Exception e) {
+//			return null;
+//		}
+//	}
 	
 	
-	public void selectPage(String page, Model model) {
+	public void selectPage(String page, Model model, String u_email) {
 
 
 		int totalCount = cinputDao.selectCount();
@@ -78,14 +78,14 @@ public class CInputServiceImplV1 implements CInputService {
 
 //		int offsetCount = (intPageNum - 1) * pageDto.getLimitCount();
 
-		List<CInputDto> cinputs = cinputDao.selectPage(pageDto.getLimitCount(), pageDto.getOffsetNum());
+		List<CInputDto> cinputs = cinputDao.selectPage(pageDto.getLimitCount(), pageDto.getOffsetNum(),u_email);
 
 		model.addAttribute("CHALLS", cinputs);
 		model.addAttribute("PAGI", pageDto);
 		
 	}
 
-	public void selectPage(String page, Model model, String search) {
+	public void selectPage(String page, Model model, String search, String u_email) {
 		
 		// 검색어를 빈칸을 기준으로 분해하기
 				String[] searchs = search.split(" ");

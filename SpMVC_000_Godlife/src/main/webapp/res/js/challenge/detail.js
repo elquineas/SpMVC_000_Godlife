@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // click event e.target 은 delete button 이 된다.
     const btn = e.target;
     const id = btn.dataset.id;
-    if (confirm("삭제한 데이터는 복구 할수 없습니다. /n 정말 삭제 할까요?")) {
+    if (confirm("삭제한 데이터는 복구 할수 없습니다. 정말 삭제 할까요?")) {
       /*
             JS 에서 서버 요청한 후 화면에 대한 것
             document.location.href = "URL" 으로 요청을 하면
@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 겹쳐서 표현된다.
                 뒤로가기 화면을 없애는 효과를 낸다.
         */
+      // document.location.replace(`${rootPath}/challenge/list`);
       document.location.replace(`${rootPath}/challenge/delete?c_seq=${id}`);
       // document.location.href = `${rootPath}/challenge/delete?c_seq=${id}`;
     }

@@ -21,11 +21,6 @@
 										<form method="post" class="main cinput">
 
 											<div>
-												<label>email</label> <input name="c_uemail" placeholder="email"
-													value="${CINP.c_uemail}" />
-											</div>
-
-											<div>
 												<label>제목</label> <input name="c_title" placeholder="제목"
 													value="${CINP.c_title}" />
 											</div>
@@ -63,11 +58,6 @@
 								<div class="center-wrap">
 									<div class="section text-center">
 										<form method="post" class="main coinput">
-
-											<div>
-												<label>email</label> <input name="c_uemail" placeholder="email"
-													value="${CINP.c_uemail}" />
-											</div>
 
 											<div>
 												<label>제목</label> <input name="c_title" placeholder="제목"

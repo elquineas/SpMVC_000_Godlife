@@ -12,10 +12,6 @@
 <article class="detail data">
 
 	<div>
-		<strong>uemail</strong><span>${CINP.c_uemail}</span>
-	</div>
-	
-	<div>
 		<strong>제목</strong><span>${CINP.c_title}</span>
 	</div>
 	

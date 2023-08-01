@@ -12,10 +12,10 @@ public interface SInputService {
 
 	public List<SInputDto> selectAll();
 	
-	public List<SInputDto> selectPage(String page);
+//	public List<SInputDto> selectPage(String page);
 
-	public void selectPage(String page, Model model);
-	public void selectPage(String page, Model model, String search);
+	public void selectPage(String page, Model model, String u_email);
+	public void selectPage(String page, Model model, String search, String u_email);
 	
 	public List<SInputDto> findBySTitle(String stitle);
 

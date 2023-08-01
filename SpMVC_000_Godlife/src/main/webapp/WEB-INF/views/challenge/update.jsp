@@ -6,14 +6,6 @@
 	<article class="detail data">
 
 		<div>
-			<label>uemail</label> <input name="c_uemail" value="${CINP.c_uemail}"
-				readonly="readonly" />
-		</div>
-		<div class="message b_name">
-			<label></label><span></span>
-		</div>
-
-		<div>
 			<label>제목</label> <input name="c_title" value="${CINP.c_title}" />
 		</div>
 		<div class="message b_name">

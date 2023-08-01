@@ -5,6 +5,26 @@
   
  <mapper namespace="com.godlife.app.dao.SInputDao">
  	
+ <select id="selectAll">
+ 		SELECT c_seq,
+			   s_uemail,
+			   s_title,
+			   s_memo,	
+			   s_sdate,
+			   s_edate,
+			   IFNULL(c_achieve,(TIMESTAMPDIFF(DAY , c_sdate, c_edate)+1))AS c_achieve,
+			   s_count,
+			   s_share,
+			   s_useyn,
+		       u_nickname, 
+		       ROUND((c_count / (TIMESTAMPDIFF(DAY , c_sdate, c_edate)+1))*5) AS star
+		  FROM tbl_schedule
+		  LEFT JOIN tbl_user 
+		    ON s_uemail = u_email
+		 WHERE s_useyn = 'Y'
+		 AND s_uemail = #{u_email}
+ </select>	
+ 	
  <insert id="sinsert">
  
  insert into tbl_schedule
@@ -12,7 +32,7 @@
  s_achieve, s_count, s_memo, s_share, s_useyn
 )values 
 (#{s_uemail} ,#{s_title}, #{s_write}, #{s_sdate}, #{s_edate},
-#{s_achieve}, #{s_count}, #{s_memo}, #{s_share}, #{s_useyn})
+#{s_achieve}, #{s_count}, #{s_memo}, 'Y', 'Y')
  
  </insert>
  

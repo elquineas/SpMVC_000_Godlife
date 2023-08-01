@@ -51,22 +51,22 @@ public class SInputServiceImplV1 implements SInputService {
 		return result;
 	}
 
-	public List<SInputDto> selectPage(String page) {
-		
-		try {
-			int intPageNum = Integer.valueOf(page);
-//			intPageNum = (intPageNum -1) * 10;
-			intPageNum = --intPageNum * 10;
+//	public List<SInputDto> selectPage(String page) {
+//		
+//		try {
+//			int intPageNum = Integer.valueOf(page);
+////			intPageNum = (intPageNum -1) * 10;
+//			intPageNum = --intPageNum * 10;
+//
+//			int intLimit = 10;
+//			return sinputDao.selectPage(intLimit, intPageNum);
+//
+//		} catch (Exception e) {
+//			return null;
+//		}
+//	}
 
-			int intLimit = 10;
-			return sinputDao.selectPage(intLimit, intPageNum);
-
-		} catch (Exception e) {
-			return null;
-		}
-	}
-
-	public void selectPage(String page, Model model) {
+	public void selectPage(String page, Model model, String u_email) {
 		
 	int totalCount = sinputDao.selectCount();
 		
@@ -76,14 +76,14 @@ public class SInputServiceImplV1 implements SInputService {
 
 //		int offsetCount = (intPageNum - 1) * pageDto.getLimitCount();
 
-		List<SInputDto> sinputs = sinputDao.selectPage(pageDto.getLimitCount(), pageDto.getOffsetNum());
+		List<SInputDto> sinputs = sinputDao.selectPage(pageDto.getLimitCount(), pageDto.getOffsetNum(),u_email);
 
 		model.addAttribute("SCHAS", sinputs);
 		model.addAttribute("PAGI", pageDto);
 		
 	}
 
-	public void selectPage(String page, Model model, String search) {
+	public void selectPage(String page, Model model, String search, String u_email) {
 		
 		// 검색어를 빈칸을 기준으로 분해하기
 		String[] searchs = search.split(" ");

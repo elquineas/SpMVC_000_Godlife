@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.godlife.app.model.CInputDto;
 import com.godlife.app.model.SInputDto;
+import com.godlife.app.model.UserDto;
 import com.godlife.app.service.CInputService;
 import com.godlife.app.service.SInputService;
 
@@ -24,6 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequestMapping(value = "/challenge")
+
 public class ChallengeController {
 	
 	protected final CInputService cinputService;
@@ -35,13 +38,25 @@ public class ChallengeController {
 	}
 
 	@RequestMapping(value = {"/",""}, method = RequestMethod.GET)
-	public String home(Model model) {
+	public String home(@ModelAttribute("USER") UserDto uDto, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+//		log.debug("유저정보 확인 : {}",session.getAttribute("USER_INFO"));
+		uDto = (UserDto) session.getAttribute("USER_INFO");
+		if(uDto == null) {
+			return "member";
+		}
 		
 		return "/challenge/home";
 	}
 	
 	@RequestMapping(value = "/cinsert", method = RequestMethod.GET)
-	public String cinsert(@ModelAttribute("CINP")CInputDto cinputDto) {
+	public String cinsert(@ModelAttribute("CINP")CInputDto cinputDto, @ModelAttribute("USER") UserDto uDto, Model model, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		uDto = (UserDto) session.getAttribute("USER_INFO");
+		if(uDto == null) {
+			return "member";
+		}
 		
 		return "/challenge/cinput";
 	}
@@ -50,15 +65,30 @@ public class ChallengeController {
 			produces = "text/html;charset=UTF-8")
 	public String insert(@ModelAttribute("CINP") CInputDto cinputDto, 
 			Model model, 
-			HttpSession httpSession) {
+			@ModelAttribute("USER") UserDto uDto,
+			HttpServletRequest request) {
 		
+		HttpSession session = request.getSession();
+		uDto = (UserDto) session.getAttribute("USER_INFO");
+		
+		cinputDto.setC_uemail(uDto.getU_email());
+		log.debug("데이터확인 : {}",cinputDto);
 		cinputService.cinsert(cinputDto);
 
 		return "redirect:/challenge/list";
 	}
 	
 	@RequestMapping(value = "/sinsert", method = RequestMethod.GET)
-	public String sinsert(@ModelAttribute("SINP")SInputDto sinputDto) {
+	public String sinsert(@ModelAttribute("SINP")SInputDto sinputDto, 
+			@ModelAttribute("USER") UserDto uDto, 
+			Model model,
+			HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		uDto = (UserDto) session.getAttribute("USER_INFO");
+		if(uDto == null) {
+			return "member";
+		}
 		
 		return "/challenge/sinput";
 	}
@@ -67,10 +97,16 @@ public class ChallengeController {
 			produces = "text/html;charset=UTF-8")
 	public String sinsert(@ModelAttribute("SINP") SInputDto sinputDto, 
 			Model model, 
-			HttpSession httpSession) {
+			@ModelAttribute("USER") UserDto uDto,
+			HttpServletRequest request) {
 		
+		HttpSession session = request.getSession();
+		uDto = (UserDto) session.getAttribute("USER_INFO");
+		
+		sinputDto.setS_uemail(uDto.getU_email());
+		log.debug("데이터확인 : {}",sinputDto);
 		sinputService.sinsert(sinputDto);
-
+		
 		return "redirect:/challenge/list";
 	}
 	
@@ -79,22 +115,29 @@ public class ChallengeController {
 			@ModelAttribute("SINP")SInputDto sinputDto,
 			@RequestParam(name="page" , required = false , defaultValue = "1") String page,
 			@RequestParam(name="search" , required = false , defaultValue = "-1") String search,
-			Model model) {
+			@ModelAttribute("USER") UserDto uDto, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		uDto = (UserDto) session.getAttribute("USER_INFO");
+		if(uDto == null) {
+			return "member";
+		}
 		
 //		List<CInputDto> cinputList = cinputService.selectAll();
 //		List<SInputDto> sinputList = sinputService.selectAll();
 		
 		if(search.equals("-1")) {
-			cinputService.selectPage(page, model);
-			sinputService.selectPage(page, model);
+			cinputService.selectPage(page, model,uDto.getU_email());
+			sinputService.selectPage(page, model,uDto.getU_email());
 		} else {
-			cinputService.selectPage(page, model, search);
-			sinputService.selectPage(page, model, search);
+			cinputService.selectPage(page, model, search,uDto.getU_email());
+			sinputService.selectPage(page, model, search,uDto.getU_email());
 		}
 		
 		model.addAttribute("SEARCH", search);
 //		model.addAttribute("CHALLS", cinputList);
 //		model.addAttribute("SCHAS", sinputList);
+		
+		
 		
 		return "/challenge/list";
 		
@@ -105,22 +148,28 @@ public class ChallengeController {
 			@ModelAttribute("SINP")SInputDto sinputDto,
 			@RequestParam(name="page" , required = false , defaultValue = "1") String page,
 			@RequestParam(name="search" , required = false , defaultValue = "-1") String search,
-			Model model) {
-		
+			@ModelAttribute("USER") UserDto uDto, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		uDto = (UserDto) session.getAttribute("USER_INFO");
+		if(uDto == null) {
+			return "member";
+		}
 //		List<CInputDto> cinputList = cinputService.selectAll();
 //		List<SInputDto> sinputList = sinputService.selectAll();
 		
 		if(search.equals("-1")) {
-			cinputService.selectPage(page, model);
-			sinputService.selectPage(page, model);
+			cinputService.selectPage(page, model,uDto.getU_email());
+			sinputService.selectPage(page, model,uDto.getU_email());
 		} else {
-			cinputService.selectPage(page, model, search);
-			sinputService.selectPage(page, model, search);
+			cinputService.selectPage(page, model, search,uDto.getU_email());
+			sinputService.selectPage(page, model, search,uDto.getU_email());
 		}
 		
 		model.addAttribute("SEARCH", search);
 //		model.addAttribute("CHALLS", cinputList);
 //		model.addAttribute("SCHAS", sinputList);
+		
+
 		
 		return "/challenge/slist";
 		
@@ -132,12 +181,18 @@ public class ChallengeController {
 			required = false, 
 			defaultValue = "0") 
 	long c_seq, 
-	 Model model) {
+	@ModelAttribute("USER") UserDto uDto, Model model, HttpServletRequest request) {
 
 		cinputDto = cinputService.findById(c_seq);
 
 		model.addAttribute("CINP", cinputDto);
 
+		HttpSession session = request.getSession();
+		uDto = (UserDto) session.getAttribute("USER_INFO");
+		if(uDto == null) {
+			return "member";
+		}
+		
 		return "/challenge/detail";
 	}
 	
@@ -146,13 +201,20 @@ public class ChallengeController {
 			@RequestParam(value="s_seq", 
 			required = false, 
 			defaultValue = "0") 
-	long s_seq, Model model) {
+			long s_seq, 
+			@ModelAttribute("USER") UserDto uDto, Model model, HttpServletRequest request) {
 
 		sinputDto = sinputService.findById(s_seq);
 
 		// SELECT 된 주소를 model에 담아서 view 로 전달
 		model.addAttribute("SINP", sinputDto);
 
+		HttpSession session = request.getSession();
+		uDto = (UserDto) session.getAttribute("USER_INFO");
+		if(uDto == null) {
+			return "member";
+		}
+		
 		return "/challenge/sdetail";
 	}
 	
@@ -160,12 +222,18 @@ public class ChallengeController {
 	public String update(@ModelAttribute("CINP") CInputDto cinputdto, @RequestParam(value="c_seq", 
 			required = false, 
 			defaultValue = "0") 
-	long c_seq, Model model) {
+			long c_seq,
+			@ModelAttribute("USER") UserDto uDto, Model model, HttpServletRequest request) {
 
 		// 변경할 주소 데이터 SELETE 하여 model 에 담기
 		CInputDto cinputDto = cinputService.findById(c_seq);
 		model.addAttribute("CINP", cinputDto);
 
+		HttpSession session = request.getSession();
+		uDto = (UserDto) session.getAttribute("USER_INFO");
+		if(uDto == null) {
+			return "member";
+		}
 
 		return "/challenge/update";
 
@@ -189,12 +257,18 @@ public class ChallengeController {
 			@RequestParam(value="s_seq", 
 			required = false, 
 			defaultValue = "0") 
-	long s_seq, Model model) {
+			long s_seq,
+			@ModelAttribute("USER") UserDto uDto, Model model, HttpServletRequest request) {
 
 		// 변경할 주소 데이터 SELETE 하여 model 에 담기
 		sinputDto = sinputService.findById(s_seq);
 		model.addAttribute("SINP", sinputDto);
 
+		HttpSession session = request.getSession();
+		uDto = (UserDto) session.getAttribute("USER_INFO");
+		if(uDto == null) {
+			return "member";
+		}
 
 		return "/challenge/supdate";
 
@@ -214,8 +288,31 @@ public class ChallengeController {
 		}
 	}
 	
+//	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+//	public String delete(@ModelAttribute("CINP") CInputDto cinputdto, @RequestParam(value="c_seq", 
+//			required = false, 
+//			defaultValue = "0") 
+//			long c_seq,
+//			@ModelAttribute("USER") UserDto uDto, Model model, HttpServletRequest request) {
+//		HttpSession session = request.getSession();
+//		uDto = (UserDto) session.getAttribute("USER_INFO");
+//		if(uDto == null) {
+//			return "member";
+//		}
+//		
+//		int result = cinputService.delete(c_seq);
+//		CInputDto cinputDto = cinputService.findById(c_seq);
+//		model.addAttribute("CINP", cinputDto);
+//
+//		
+//
+//		return "/challenge/list";
+//
+//	}
+	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String delete(String c_seq) {
+		
 		int result = cinputService.delete(c_seq);
 
 		if (result > 0) {

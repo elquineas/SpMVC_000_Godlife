@@ -14,10 +14,10 @@ public interface CInputService {
 	public int cinsert(CInputDto cinputDto);
 
 	public List<CInputDto> selectAll();
-	public List<CInputDto> selectPage(String page);
+//	public List<CInputDto> selectPage(String page);
 
-	public void selectPage(String page, Model model);
-	public void selectPage(String page, Model model, String search);
+	public void selectPage(String page, Model model, String u_email);
+	public void selectPage(String page, Model model, String search, String u_email);
 	
 	public List<CInputDto> findByCTitle(String ctitle);
 	
@@ -26,7 +26,7 @@ public interface CInputService {
 
 	public int update(CInputDto cinputdto);
 
-	public int delete(String id);
+	public int delete(String c_seq);
 
 
 }
