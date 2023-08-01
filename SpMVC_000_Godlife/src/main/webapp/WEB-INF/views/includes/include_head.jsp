@@ -33,4 +33,5 @@
 <script src="${rootPath}/res/js/challenge/sdetail.js"></script>
 <script src="${rootPath}/res/js/challenge/slist.js"></script>
 <script src="${rootPath}/res/js/challengeTest/recommend.js"></script>
+<script src="${rootPath}/res/js/challengeTest/main.js"></script>
 </head>

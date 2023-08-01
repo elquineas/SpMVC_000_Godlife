@@ -15,6 +15,26 @@
 
 	</section>
 </body>
+<script>
+   function Func(){
+     const count = document.getElementById('c_count').value;
+     const achieve = document.getElementById('challenge').value;
+     document.getElementById('challenge').value=+1;
+     document.getElementById('c_count').textContent=achieve+1;  
+   }
+/*   function zeroFunc(){
+    const count = document.getElementById('zero_count').value;
+    const pro_zero = document.getElementById('zero').value;
+    document.getElementById('zero').value=pro_zero+1;
+    document.getElementById('zero_count').textContent=pro_zero+1;  
+  }
+  function bookFunc(){
+    const count = document.getElementById('book_count').value;
+    const pro_book = document.getElementById('book').value;
+    document.getElementById('book').value=pro_book+1;
+    document.getElementById('book_count').textContent=pro_book+1;  
+  } */
+ </script>
 </html>
 
 

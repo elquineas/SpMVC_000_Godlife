@@ -44,6 +44,8 @@ public class ChallengeTestController {
 		int count = cService.countChallenge(uDto.getU_email());
 		log.debug("(컨트롤러) 챌린지 카운트 : {}",count);
 		if(count > 0){
+			List<ChallengeDto> cList = cService.selectAll2();
+			model.addAttribute("CHALLENGES" ,cList);
 			return "challengeTest/main";
 		}
 		
@@ -51,6 +53,31 @@ public class ChallengeTestController {
 		return "challengeTest/recommend";
 	}
 	
+	
+	@RequestMapping(value = {"/main"}, method = RequestMethod.GET)
+	public String main(@ModelAttribute("CHALLENGE")ChallengeDto cDto, Model model) {
+		
+		
+		
+
+		return "challengeTest/main";
+		
+	}
+	
+	
+//	@RequestMapping(value = {"/main"}, method = RequestMethod.POST)
+//	public String main(@ModelAttribute("CHALLENGE")ChallengeDto cDto, Model model) {
+//		
+//		model.addAttribute("CHALLENGE" ,cDto);
+//		List<ChallengeDto> cList = cService.selectAll();
+//		model.addAttribute("CHALLENGES" ,cList);
+//		
+//
+//		
+//		return "challengeTest/main";
+//		
+//	}
+//	
 
 	@RequestMapping(value = {"/share"}, method = RequestMethod.GET)
 	public String share(@RequestParam(name="search", required = false, defaultValue = "-1") String search, Model model) {

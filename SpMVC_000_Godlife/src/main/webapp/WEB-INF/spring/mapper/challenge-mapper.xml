@@ -24,6 +24,7 @@
 		 WHERE c_share = 'Y'
 		   AND c_useyn = 'Y'
  	</select>
+
  	<select id="selectSearchAll">
  		SELECT c_seq,
 			   c_uemail,
