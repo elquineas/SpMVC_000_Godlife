@@ -10,6 +10,7 @@ public interface ChallengeDao {
 	
 	public List<ChallengeDto> selectAll();
 	public List<ChallengeDto> selectSearchAll(String search);
+	public int countChallenge(String u_email);
 	
 
 }

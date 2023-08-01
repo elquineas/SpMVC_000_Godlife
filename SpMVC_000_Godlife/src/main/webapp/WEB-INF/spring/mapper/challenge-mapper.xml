@@ -46,4 +46,11 @@
    		    OR  c_memo LIKE CONCAT('%', #{search},'%' ))
  	</select>
  	
+ 	<select id="countChallenge">
+ 		SELECT COUNT(*)
+		  FROM tbl_challenge
+		 WHERE c_uemail = #{u_email}
+		   AND c_useyn = 'Y'
+ 	</select>
+ 	
  </mapper> 

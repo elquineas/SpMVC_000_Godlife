@@ -19,7 +19,6 @@ public class ChallengeServiceImpl implements ChallengeService{
 		this.cDao = cDao;
 	}
 
-
 	@Override
 	public List<ChallengeDto> selectAll() {
 		return cDao.selectAll();
@@ -28,6 +27,11 @@ public class ChallengeServiceImpl implements ChallengeService{
 	@Override
 	public List<ChallengeDto> selectAll(String search) {
 		return cDao.selectSearchAll(search);
+	}
+
+	@Override
+	public int countChallenge(String u_email) {
+		return cDao.countChallenge(u_email);
 	}
 	
 }

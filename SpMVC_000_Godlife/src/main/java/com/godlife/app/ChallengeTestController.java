@@ -41,6 +41,13 @@ public class ChallengeTestController {
 			return "member";
 		}
 		
+		int count = cService.countChallenge(uDto.getU_email());
+		log.debug("(컨트롤러) 챌린지 카운트 : {}",count);
+		if(count > 0){
+			return "challengeTest/main";
+		}
+		
+		
 		return "challengeTest/recommend";
 	}
 	

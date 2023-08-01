@@ -8,5 +8,6 @@ public interface ChallengeService {
 
 	public List<ChallengeDto> selectAll();
 	public List<ChallengeDto> selectAll(String search);
+	public int countChallenge(String u_email);
 
 }
